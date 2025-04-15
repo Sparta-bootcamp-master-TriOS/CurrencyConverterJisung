@@ -8,6 +8,7 @@ final class CurrencyInfoViewController: UIViewController {
 
     private let currencyInfoView = CurrencyInfoView()
     private(set) lazy var tableView = currencyInfoView.tableView
+    private let searchBar = CurrencySearchBar()
 
     init(currencyInfoViewModel: CurrencyInfoViewModel) {
         self.currencyInfoViewModel = currencyInfoViewModel
@@ -31,15 +32,22 @@ final class CurrencyInfoViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .background
 
-        [currencyInfoView]
+        [searchBar, currencyInfoView]
             .forEach { view.addSubview($0) }
 
+        searchBar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+        }
+
         currencyInfoView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(searchBar.snp.bottom)
+            $0.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
     }
 
     private func configureTableView() {
+        searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
     }
