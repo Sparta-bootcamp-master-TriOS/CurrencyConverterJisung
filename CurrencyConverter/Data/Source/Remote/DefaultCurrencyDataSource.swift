@@ -6,9 +6,9 @@ struct DefaultCurrencyDataSource: CurrencyDataSource {
     init(baseURL: String) {
         self.baseURL = baseURL
     }
-    
+
     /// 환율 데이터를 가져오는 메서드 (제네릭 타입 지원)
-    /// 
+    ///
     /// - Parameter completion: 요청 결과를 전달하는 클로저
     func fetchCurrency<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
         AF.request(baseURL).responseDecodable(of: T.self) { response in

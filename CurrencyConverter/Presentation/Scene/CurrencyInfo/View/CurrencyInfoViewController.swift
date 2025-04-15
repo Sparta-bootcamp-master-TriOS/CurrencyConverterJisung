@@ -35,7 +35,7 @@ final class CurrencyInfoViewController: UIViewController {
             .forEach { view.addSubview($0) }
 
         currencyInfoView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide).inset(CIC.TableView.horizontalInset)
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
 

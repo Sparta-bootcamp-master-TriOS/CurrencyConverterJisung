@@ -2,7 +2,8 @@ import SnapKit
 import UIKit
 
 final class CurrencyInfoView: UIView {
-    private let inset = CurrencyInfoConstant.Separator.edgesInset
+    private let horizontal = CurrencyInfoConstant.Separator.horizontalInset
+    private let vertical = CurrencyInfoConstant.Separator.verticalInset
 
     let tableView = UITableView()
 
@@ -17,7 +18,7 @@ final class CurrencyInfoView: UIView {
     }
 
     private func configureUI() {
-        tableView.separatorInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        tableView.separatorInset = UIEdgeInsets(top: vertical, left: horizontal, bottom: vertical, right: horizontal)
         tableView.register(CurrencyInfoTableViewCell.self, forCellReuseIdentifier: CurrencyInfoTableViewCell.identifier)
 
         addSubview(tableView)
