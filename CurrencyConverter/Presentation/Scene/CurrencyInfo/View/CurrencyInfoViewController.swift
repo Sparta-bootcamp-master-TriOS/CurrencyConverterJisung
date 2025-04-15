@@ -4,6 +4,7 @@ import UIKit
 final class CurrencyInfoViewController: UIViewController {
     typealias Const = CurrencyInfoConstant.Label
 
+    var coordinator: CurrencyInfoCoordinator?
     let currencyInfoViewModel: CurrencyInfoViewModel
 
     private let titleLabel = CurrencyLabel()

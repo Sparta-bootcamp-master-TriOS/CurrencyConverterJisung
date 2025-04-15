@@ -2,18 +2,28 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
 
-        let appDIContainer = AppDIContainer()
-        let rootViewController = appDIContainer.makeCurrencyInfoViewController()
+        let navigationController = UINavigationController()
 
-        window.rootViewController = rootViewController
+        let appDIContainer = AppDIContainer()
+
+        let appCoordinator = AppCoordinator(
+            navigationController: navigationController,
+            appDIContainer: appDIContainer
+        )
+
+        appCoordinator.start()
+
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
 
         self.window = window
+        self.appCoordinator = appCoordinator
     }
 
     func sceneDidEnterBackground(_: UIScene) {
