@@ -31,6 +31,9 @@ final class CurrencyInfoTableViewCell: UITableViewCell, ReuseIdentifier {
         }
     }
 
+    /// 셀 정보 업데이트
+    /// 
+    /// - Parameter currency: 표시할 환율 데이터
     func updateCell(by currency: Currency) {
         codeLabel.text = currency.code
         rateLabel.text = String(format: CurrencyInfoConstant.TableView.rateFormat, currency.rate)
