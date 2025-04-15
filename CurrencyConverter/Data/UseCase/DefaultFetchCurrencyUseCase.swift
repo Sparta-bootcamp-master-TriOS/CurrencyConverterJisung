@@ -5,7 +5,7 @@ struct DefaultFetchCurrencyUseCase: FetchCurrencyUseCase {
         self.currencyRepository = currencyRepository
     }
 
-    func fetchCurrencies(completion: @escaping (Result<(CurrencyMeta, [CurrencyRate]), Error>) -> Void) {
+    func fetchCurrencies(completion: @escaping (Result<(CurrencyMeta, [Currency]), Error>) -> Void) {
         currencyRepository.fetchCurrencies(completion: completion)
     }
 }

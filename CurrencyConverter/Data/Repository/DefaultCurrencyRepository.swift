@@ -7,7 +7,7 @@ struct DefaultCurrencyRepository: CurrencyRepository {
         self.currencyMapper = currencyMapper
     }
 
-    func fetchCurrencies(completion: @escaping (Result<(CurrencyMeta, [CurrencyRate]), Error>) -> Void) {
+    func fetchCurrencies(completion: @escaping (Result<(CurrencyMeta, [Currency]), Error>) -> Void) {
         currencyDataSource.fetchCurrency { (result: Result<CurrencyResponse, Error>) in
             switch result {
             case let .success(response):

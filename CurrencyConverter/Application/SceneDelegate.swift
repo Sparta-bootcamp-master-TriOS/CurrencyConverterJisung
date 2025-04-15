@@ -7,7 +7,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
 
-        let rootViewController = CurrencyInfoViewController()
+        let appDIContainer = AppDIContainer()
+        let rootViewController = appDIContainer.makeCurrencyInfoViewController()
 
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()

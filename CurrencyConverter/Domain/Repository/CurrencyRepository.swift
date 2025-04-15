@@ -1,3 +1,3 @@
 protocol CurrencyRepository {
-    func fetchCurrencies(completion: @escaping (Result<(CurrencyMeta, [CurrencyRate]), Error>) -> Void)
+    func fetchCurrencies(completion: @escaping (Result<(CurrencyMeta, [Currency]), Error>) -> Void)
 }
