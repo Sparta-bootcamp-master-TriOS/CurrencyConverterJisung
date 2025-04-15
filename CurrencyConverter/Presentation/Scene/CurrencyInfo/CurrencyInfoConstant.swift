@@ -21,6 +21,9 @@ enum CurrencyInfoConstant {
     }
 
     enum Label {
+        static let defaultSpacing: CGFloat = 16
+        static let topSpacing: CGFloat = 32
         static let noFilteredCurrencies = "검색 결과 없음"
+        static let infoTitle = "환율 정보"
     }
 }

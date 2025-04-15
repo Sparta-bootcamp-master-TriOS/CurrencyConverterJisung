@@ -2,13 +2,14 @@ import SnapKit
 import UIKit
 
 final class CurrencyInfoViewController: UIViewController {
-    typealias CIC = CurrencyInfoConstant
+    typealias Const = CurrencyInfoConstant.Label
 
     let currencyInfoViewModel: CurrencyInfoViewModel
 
+    private let titleLabel = CurrencyLabel()
+    private let searchBar = CurrencySearchBar()
     private let currencyInfoView = CurrencyInfoView()
     private(set) lazy var tableView = currencyInfoView.tableView
-    private let searchBar = CurrencySearchBar()
     private let noFilteredCurrencies = NoFilteredCurrenciesLabel()
 
     init(currencyInfoViewModel: CurrencyInfoViewModel) {
@@ -33,11 +34,16 @@ final class CurrencyInfoViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .background
 
-        [searchBar, currencyInfoView, noFilteredCurrencies]
+        [titleLabel, searchBar, currencyInfoView, noFilteredCurrencies]
             .forEach { view.addSubview($0) }
 
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(Const.topSpacing)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(Const.defaultSpacing)
+        }
+
         searchBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(titleLabel.snp.bottom)
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
 
@@ -82,7 +88,7 @@ final class CurrencyInfoViewController: UIViewController {
 
     func updateUIAfterFiltering() {
         let isEmpty = currencyInfoViewModel.filteredCurrencies.isEmpty
-        
+
         noFilteredCurrencies.isHidden = !isEmpty
         tableView.isHidden = isEmpty
     }
