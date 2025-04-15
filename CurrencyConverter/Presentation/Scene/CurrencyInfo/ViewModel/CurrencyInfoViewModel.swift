@@ -12,6 +12,7 @@ final class CurrencyInfoViewModel {
         self.fetchCurrencyUseCase = fetchCurrencyUseCase
     }
 
+    /// 환율 데이터를 요청하고, 정렬 및 필터링을 적용한 후 업데이트 콜백을 호출하는 메서드
     func fetchCurrencies() {
         fetchCurrencyUseCase.fetchCurrencies { [weak self] result in
             switch result {
@@ -29,6 +30,9 @@ final class CurrencyInfoViewModel {
         }
     }
 
+    /// 키워드에 따라 환율 목록을 필터링하는 메서드
+    ///
+    /// - Parameter keyword: 필터링에 사용할 검색어
     func filterCurrencies(with keyword: String) {
         if keyword.isEmpty {
             filteredCurrencies = currencies
