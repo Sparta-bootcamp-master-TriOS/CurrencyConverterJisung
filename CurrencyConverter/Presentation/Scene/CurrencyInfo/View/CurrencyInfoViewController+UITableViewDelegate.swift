@@ -10,6 +10,6 @@ extension CurrencyInfoViewController: UITableViewDelegate {
 
         let currency = currencyInfoViewModel.filteredCurrencies[indexPath.row]
 
-        coordinator?.pushCurrencyConverter(code: currency.code, name: currency.name)
+        coordinator?.pushCurrencyConverter(with: currency)
     }
 }

@@ -38,8 +38,8 @@ final class CurrencyStackView: UIView {
         }
     }
 
-    func updateLabel(to code: String, _ name: String) {
-        codeLabel.text = code
-        nameLabel.text = name
+    func updateLabel(to currency: Currency) {
+        codeLabel.text = currency.code
+        nameLabel.text = currency.name
     }
 }

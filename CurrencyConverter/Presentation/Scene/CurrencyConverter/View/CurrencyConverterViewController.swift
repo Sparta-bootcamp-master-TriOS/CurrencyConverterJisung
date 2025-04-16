@@ -4,18 +4,16 @@ import UIKit
 final class CurrencyConverterViewController: UIViewController {
     typealias Const = CurrencyConverterConstant
 
+    private let currencyConverterViewModel: CurrencyConverterViewModel
+
     private let titleLabel = TitleLabel()
     private let currencyStackView = CurrencyStackView()
     private let amountTextField = AmountTextField()
     private let convertButton = ConvertButton()
     private let resultLabel = ResultLabel()
 
-    private let code: String
-    private let name: String
-
-    init(code: String, name: String) {
-        self.code = code
-        self.name = name
+    init(currencyConverterViewModel: CurrencyConverterViewModel) {
+        self.currencyConverterViewModel = currencyConverterViewModel
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,6 +26,7 @@ final class CurrencyConverterViewController: UIViewController {
         super.viewDidLoad()
 
         configureUI()
+        configureBindings()
     }
 
     private func configureUI() {
@@ -35,7 +34,7 @@ final class CurrencyConverterViewController: UIViewController {
 
         titleLabel.updateText(Const.Label.converterTitle)
 
-        currencyStackView.updateLabel(to: code, name)
+        currencyStackView.updateLabel(to: currencyConverterViewModel.currency)
 
         [titleLabel, currencyStackView, amountTextField, convertButton, resultLabel]
             .forEach { view.addSubview($0) }
@@ -66,5 +65,30 @@ final class CurrencyConverterViewController: UIViewController {
             $0.top.equalTo(convertButton.snp.bottom).offset(Const.Constraint.topSpacing)
             $0.horizontalEdges.equalToSuperview().inset(Const.Constraint.horizontalSpacing)
         }
+    }
+
+    private func configureBindings() {
+        convertButton.onButtonTapped = { [weak self] in
+            guard let self else { return }
+
+            guard let inputText = amountTextField.text, !inputText.isEmpty else {
+                showErrorAlert(message: Const.Alert.empty)
+
+                return
+            }
+
+            guard let result = self.currencyConverterViewModel.convertCurrency(amountText: inputText) else {
+                showErrorAlert(message: Const.Alert.noNumber)
+
+                return
+            }
+
+            self.resultLabel.updateUI(result: result)
+        }
+    }
+
+    private func showErrorAlert(message: String) {
+        let alert = AlertManager.errorAlert(message: message)
+        present(alert, animated: true)
     }
 }

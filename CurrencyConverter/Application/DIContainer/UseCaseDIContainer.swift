@@ -8,4 +8,8 @@ final class UseCaseDIContainer {
     func makeFetchCurrencyUseCase() -> FetchCurrencyUseCase {
         DefaultFetchCurrencyUseCase(currencyRepository: repositoryDIContainer.makeCurrencyRepository())
     }
+
+    func makeConvertCurrencyUseCase() -> ConvertCurrencyUseCase {
+        DefaultConvertCurrencyUseCase()
+    }
 }
