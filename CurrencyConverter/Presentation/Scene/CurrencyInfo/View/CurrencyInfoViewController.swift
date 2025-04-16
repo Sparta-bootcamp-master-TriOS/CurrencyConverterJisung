@@ -7,7 +7,7 @@ final class CurrencyInfoViewController: UIViewController {
     var coordinator: CurrencyInfoCoordinator?
     let currencyInfoViewModel: CurrencyInfoViewModel
 
-    private let titleLabel = CurrencyLabel()
+    private let titleLabel = TitleLabel()
     private let searchBar = CurrencySearchBar()
     private let currencyInfoView = CurrencyInfoView()
     private(set) lazy var tableView = currencyInfoView.tableView
@@ -34,6 +34,8 @@ final class CurrencyInfoViewController: UIViewController {
 
     private func configureUI() {
         view.backgroundColor = .background
+
+        titleLabel.updateText(Const.infoTitle)
 
         [titleLabel, searchBar, currencyInfoView, noFilteredCurrencies]
             .forEach { view.addSubview($0) }

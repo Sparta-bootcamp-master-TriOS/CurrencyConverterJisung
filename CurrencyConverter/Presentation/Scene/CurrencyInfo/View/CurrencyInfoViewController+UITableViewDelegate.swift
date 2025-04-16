@@ -5,7 +5,11 @@ extension CurrencyInfoViewController: UITableViewDelegate {
         CurrencyInfoConstant.TableView.height
     }
 
-    func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
-        coordinator?.pushCurrencyConverter()
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let currency = currencyInfoViewModel.filteredCurrencies[indexPath.row]
+
+        coordinator?.pushCurrencyConverter(code: currency.code, name: currency.name)
     }
 }

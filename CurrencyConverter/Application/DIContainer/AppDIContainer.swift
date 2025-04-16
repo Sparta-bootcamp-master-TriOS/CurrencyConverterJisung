@@ -19,7 +19,7 @@ final class AppDIContainer {
         CurrencyInfoViewController(currencyInfoViewModel: makeCurrencyInfoViewModel())
     }
 
-    func makeCurrencyConverterViewController() -> CurrencyConverterViewController {
-        CurrencyConverterViewController()
+    func makeCurrencyConverterViewController(code: String, name: String) -> CurrencyConverterViewController {
+        CurrencyConverterViewController(code: code, name: name)
     }
 }

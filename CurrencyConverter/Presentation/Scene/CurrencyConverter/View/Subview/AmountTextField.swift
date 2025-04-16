@@ -1,7 +1,6 @@
-import SnapKit
 import UIKit
 
-final class CurrencyLabel: UILabel {
+final class AmountTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -13,8 +12,9 @@ final class CurrencyLabel: UILabel {
     }
 
     private func configureUI() {
-        text = CurrencyInfoConstant.Label.infoTitle
-        textAlignment = .left
-        font = .boldSystemFont(ofSize: 32)
+        borderStyle = .roundedRect
+        keyboardType = .decimalPad
+        textAlignment = .center
+        placeholder = CurrencyConverterConstant.Label.placeholder
     }
 }
