@@ -25,6 +25,7 @@ final class CurrencyInfoViewController: UIViewController {
         configureUI()
         configureTableView()
         configureBindings()
+        configureBackButton()
         fetchCurrencies()
     }
 
@@ -78,6 +79,13 @@ final class CurrencyInfoViewController: UIViewController {
                 self?.showErrorAlert()
             }
         }
+    }
+
+    private func configureBackButton() {
+        let backButton = UIBarButtonItem()
+        backButton.title = Const.infoTitle
+
+        navigationItem.backBarButtonItem = backButton
     }
 
     private func fetchCurrencies() {
