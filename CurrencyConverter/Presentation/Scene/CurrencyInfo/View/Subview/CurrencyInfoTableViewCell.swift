@@ -4,9 +4,12 @@ import UIKit
 final class CurrencyInfoTableViewCell: UITableViewCell, ReuseIdentifier {
     typealias Const = CurrencyInfoConstant.TableView
 
+    var onButtonTapped: (() -> Void)?
+
     private let codeLabel = UILabel()
     private let nameLabel = UILabel()
     private let rateLabel = UILabel()
+    private let favoriteButton = UIButton()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -29,6 +32,14 @@ final class CurrencyInfoTableViewCell: UITableViewCell, ReuseIdentifier {
         rateLabel.textAlignment = .right
         rateLabel.font = .systemFont(ofSize: Const.defaultFontSize)
 
+        let buttonImage = UIImage(
+            systemName: Const.star,
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: Const.defaultFontSize)
+        )
+        favoriteButton.setImage(buttonImage, for: .normal)
+        favoriteButton.tintColor = .favorite
+        favoriteButton.addTarget(self, action: #selector(buttonTapped), for: .touchDown)
+
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = Const.labelStackViewSpacing
@@ -36,7 +47,7 @@ final class CurrencyInfoTableViewCell: UITableViewCell, ReuseIdentifier {
         [codeLabel, nameLabel]
             .forEach { stackView.addArrangedSubview($0) }
 
-        [stackView, rateLabel]
+        [stackView, rateLabel, favoriteButton]
             .forEach { contentView.addSubview($0) }
 
         stackView.snp.makeConstraints {
@@ -46,9 +57,13 @@ final class CurrencyInfoTableViewCell: UITableViewCell, ReuseIdentifier {
 
         rateLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(Const.defaultSpacing)
-            $0.leading.equalTo(stackView.snp.trailing).offset(Const.defaultSpacing)
             $0.width.equalTo(Const.rateLabelWidth)
+        }
+
+        favoriteButton.snp.makeConstraints {
+            $0.verticalEdges.equalToSuperview()
+            $0.leading.equalTo(rateLabel.snp.trailing).offset(Const.defaultSpacing)
+            $0.trailing.equalToSuperview().inset(Const.defaultSpacing)
         }
     }
 
@@ -59,5 +74,21 @@ final class CurrencyInfoTableViewCell: UITableViewCell, ReuseIdentifier {
         codeLabel.text = currency.code
         nameLabel.text = currency.name
         rateLabel.text = currency.rate
+
+        updateFavoriteButton(by: currency.isFavorite)
+    }
+
+    func updateFavoriteButton(by isFavorite: Bool) {
+        let buttonImage = UIImage(
+            systemName: isFavorite ? Const.starFill : Const.star,
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: Const.defaultFontSize)
+        )
+
+        favoriteButton.setImage(buttonImage, for: .normal)
+    }
+
+    @objc
+    private func buttonTapped() {
+        onButtonTapped?()
     }
 }

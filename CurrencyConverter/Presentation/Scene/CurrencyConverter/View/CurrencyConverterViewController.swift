@@ -34,7 +34,7 @@ final class CurrencyConverterViewController: UIViewController {
 
         titleLabel.updateText(Const.Label.converterTitle)
 
-        currencyStackView.updateLabel(to: currencyConverterViewModel.currency)
+        currencyStackView.updateLabel(to: currencyConverterViewModel.state.currency)
 
         [titleLabel, currencyStackView, amountTextField, convertButton, resultLabel]
             .forEach { view.addSubview($0) }

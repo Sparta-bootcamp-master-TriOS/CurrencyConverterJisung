@@ -7,7 +7,8 @@ struct CurrencyDisplayMapper {
         CurrencyDisplay(
             code: entity.code,
             name: entity.name,
-            rate: String(format: CurrencyInfoConstant.TableView.rateFormat, entity.rate)
+            rate: String(format: CurrencyInfoConstant.TableView.rateFormat, entity.rate),
+            isFavorite: false
         )
     }
 }

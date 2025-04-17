@@ -11,7 +11,12 @@ extension CurrencyInfoViewController: UITableViewDataSource {
         ) as? CurrencyInfoTableViewCell else {
             return UITableViewCell()
         }
+
         cell.updateCell(by: currencyInfoViewModel.state.filteredCurrencies[indexPath.row])
+
+        cell.onButtonTapped = { [weak self] in
+            self?.currencyInfoViewModel.toggleFavorite(at: indexPath.row)
+        }
 
         return cell
     }

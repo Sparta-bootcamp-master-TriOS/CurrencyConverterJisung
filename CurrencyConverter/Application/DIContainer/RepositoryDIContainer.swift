@@ -8,7 +8,7 @@ final class RepositoryDIContainer {
     init(dataSourceDIContainer: DataSourceDIContainer) {
         self.dataSourceDIContainer = dataSourceDIContainer
     }
-    
+
     /// CurrencyRepository 생성
     func makeCurrencyRepository() -> CurrencyRepository {
         defaultCurrencyRepository

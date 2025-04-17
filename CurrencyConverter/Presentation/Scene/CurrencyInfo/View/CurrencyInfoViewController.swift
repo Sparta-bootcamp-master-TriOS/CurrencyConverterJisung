@@ -71,10 +71,12 @@ final class CurrencyInfoViewController: UIViewController {
         currencyInfoViewModel.action = { [weak self] action in
             DispatchQueue.main.async {
                 switch action {
-                case .didUpdate:
+                case .didFetch:
                     self?.tableView.reloadData()
                 case .didFail:
                     self?.showErrorAlert()
+                case .didUpdate:
+                    self?.tableView.reloadData()
                 }
             }
         }
