@@ -13,7 +13,7 @@ final class AppDIContainer {
         CurrencyInfoViewModel(fetchCurrencyUseCase: useCaseDIContainer.makeFetchCurrencyUseCase())
     }
 
-    func makeCurrencyConverterViewModel(with currency: Currency) -> CurrencyConverterViewModel {
+    func makeCurrencyConverterViewModel(with currency: CurrencyDisplay) -> CurrencyConverterViewModel {
         CurrencyConverterViewModel(
             convertCurrencyUseCase: useCaseDIContainer.makeConvertCurrencyUseCase(),
             currency: currency
@@ -26,7 +26,7 @@ final class AppDIContainer {
         CurrencyInfoViewController(currencyInfoViewModel: makeCurrencyInfoViewModel())
     }
 
-    func makeCurrencyConverterViewController(with currency: Currency) -> CurrencyConverterViewController {
+    func makeCurrencyConverterViewController(with currency: CurrencyDisplay) -> CurrencyConverterViewController {
         CurrencyConverterViewController(currencyConverterViewModel: makeCurrencyConverterViewModel(with: currency))
     }
 }

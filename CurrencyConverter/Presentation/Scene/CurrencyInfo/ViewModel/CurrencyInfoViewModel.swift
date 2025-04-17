@@ -1,12 +1,12 @@
-final class CurrencyInfoViewModel {
+final class CurrencyInfoViewModel: ViewModelProtocol {
     private let fetchCurrencyUseCase: FetchCurrencyUseCase
-
-    var onUpdate: (() -> Void)?
-    var onError: ((Error) -> Void)?
+    private let mapper = CurrencyDisplayMapper()
 
     private(set) var meta: CurrencyMeta?
-    private(set) var currencies: [Currency] = []
-    private(set) var filteredCurrencies: [Currency] = []
+    private(set) var currencies: [CurrencyDisplay] = []
+
+    var action: ((Action) -> Void)?
+    private(set) var state = State(filteredCurrencies: [])
 
     init(fetchCurrencyUseCase: FetchCurrencyUseCase) {
         self.fetchCurrencyUseCase = fetchCurrencyUseCase
@@ -15,17 +15,22 @@ final class CurrencyInfoViewModel {
     /// 환율 데이터를 요청하고, 정렬 및 필터링을 적용한 후 업데이트 콜백을 호출하는 메서드
     func fetchCurrencies() {
         fetchCurrencyUseCase.fetchCurrencies { [weak self] result in
+            guard let self else { return }
+
             switch result {
-            case let .success((meta, currencies)):
-                self?.meta = meta
+            case let .success((meta, entities)):
+                self.meta = meta
 
-                let sorted = currencies.sorted { $0.code < $1.code }
-                self?.currencies = sorted
-                self?.filteredCurrencies = sorted
+                let currencies = entities
+                    .map { self.mapper.map(from: $0) }
+                    .sorted { $0.code < $1.code }
 
-                self?.onUpdate?()
+                self.currencies = currencies
+                self.state.filteredCurrencies = currencies
+
+                self.action?(.didUpdate)
             case let .failure(error):
-                self?.onError?(error)
+                self.action?(.didFail(error))
             }
         }
     }
@@ -35,13 +40,13 @@ final class CurrencyInfoViewModel {
     /// - Parameter keyword: 필터링에 사용할 검색어
     func filterCurrencies(with keyword: String) {
         if keyword.isEmpty {
-            filteredCurrencies = currencies
+            state.filteredCurrencies = currencies
         } else {
-            filteredCurrencies = currencies.filter {
+            state.filteredCurrencies = currencies.filter {
                 $0.code.contains(keyword.uppercased()) || $0.name.contains(keyword)
             }
         }
 
-        onUpdate?()
+        action?(.didUpdate)
     }
 }

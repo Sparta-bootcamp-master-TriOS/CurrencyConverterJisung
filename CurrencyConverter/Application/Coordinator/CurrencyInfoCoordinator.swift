@@ -16,7 +16,7 @@ final class CurrencyInfoCoordinator {
         return currencyInfoViewController
     }
 
-    func pushCurrencyConverter(with currency: Currency) {
+    func pushCurrencyConverter(with currency: CurrencyDisplay) {
         let currencyConverterViewController = appDIContainer.makeCurrencyConverterViewController(with: currency)
         navigationController.pushViewController(currencyConverterViewController, animated: true)
     }

@@ -8,7 +8,7 @@ extension CurrencyInfoViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let currency = currencyInfoViewModel.filteredCurrencies[indexPath.row]
+        let currency = currencyInfoViewModel.state.filteredCurrencies[indexPath.row]
 
         coordinator?.pushCurrencyConverter(with: currency)
     }

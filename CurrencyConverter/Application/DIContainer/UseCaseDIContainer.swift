@@ -10,6 +10,6 @@ final class UseCaseDIContainer {
     }
 
     func makeConvertCurrencyUseCase() -> ConvertCurrencyUseCase {
-        DefaultConvertCurrencyUseCase()
+        DefaultConvertCurrencyUseCase(currencyRepository: repositoryDIContainer.makeCurrencyRepository())
     }
 }

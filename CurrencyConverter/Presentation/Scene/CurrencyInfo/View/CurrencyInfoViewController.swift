@@ -68,15 +68,14 @@ final class CurrencyInfoViewController: UIViewController {
     }
 
     private func configureBindings() {
-        currencyInfoViewModel.onUpdate = { [weak self] in
+        currencyInfoViewModel.action = { [weak self] action in
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
-        }
-
-        currencyInfoViewModel.onError = { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.showErrorAlert()
+                switch action {
+                case .didUpdate:
+                    self?.tableView.reloadData()
+                case .didFail:
+                    self?.showErrorAlert()
+                }
             }
         }
     }
@@ -98,7 +97,7 @@ final class CurrencyInfoViewController: UIViewController {
     }
 
     func updateUIAfterFiltering() {
-        let isEmpty = currencyInfoViewModel.filteredCurrencies.isEmpty
+        let isEmpty = currencyInfoViewModel.state.filteredCurrencies.isEmpty
 
         noFilteredCurrencies.isHidden = !isEmpty
         tableView.isHidden = isEmpty
