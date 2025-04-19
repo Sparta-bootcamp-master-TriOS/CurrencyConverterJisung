@@ -25,8 +25,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         self.appCoordinator = appCoordinator
     }
-
-    func sceneDidEnterBackground(_: UIScene) {
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-    }
 }

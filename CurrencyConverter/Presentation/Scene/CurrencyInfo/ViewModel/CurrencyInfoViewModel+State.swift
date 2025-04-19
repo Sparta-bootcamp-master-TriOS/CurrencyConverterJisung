@@ -1,7 +1,7 @@
 extension CurrencyInfoViewModel {
     struct State {
-        var meta: CurrencyMeta?
         var currencies: [CurrencyDisplay]
         var filteredCurrencies: [CurrencyDisplay]
+        var latestCurrencies: [CurrencyDisplay]?
     }
 }

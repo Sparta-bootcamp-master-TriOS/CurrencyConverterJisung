@@ -1,28 +1,36 @@
+import CoreData
+
 final class DefaultCurrencyRepository: CurrencyRepository {
-    private let currencyDataSource: CurrencyDataSource
+    private let fetchCurrencyDataSource: FetchCurrencyDataSource
+    private let fetchLatestCurrencyDataSource: FetchLatestCurrencyDataSource
+    private let saveCurrencyDataSource: SaveCurrencyDataSource
+    private let fetchFavoriteDataSource: FetchFavoriteDataSource
+    private let saveFavoriteDataSource: SaveFavoriteDataSource
+
     private let mapper = CurrencyMapper()
 
     private var cachedCurrencyMeta: CurrencyMeta?
     private var cachedCurrencies: [Currency]?
 
-    init(currencyDataSource: CurrencyDataSource) {
-        self.currencyDataSource = currencyDataSource
+    init(
+        fetchCurrencyDataSource: FetchCurrencyDataSource,
+        fetchLatestCurrencyDataSource: FetchLatestCurrencyDataSource,
+        saveCurrencyDataSource: SaveCurrencyDataSource,
+        fetchFavoriteDataSource: FetchFavoriteDataSource,
+        saveFavoriteDataSource: SaveFavoriteDataSource
+    ) {
+        self.fetchCurrencyDataSource = fetchCurrencyDataSource
+        self.fetchLatestCurrencyDataSource = fetchLatestCurrencyDataSource
+        self.saveCurrencyDataSource = saveCurrencyDataSource
+        self.fetchFavoriteDataSource = fetchFavoriteDataSource
+        self.saveFavoriteDataSource = saveFavoriteDataSource
     }
 
-    /// 환율 데이터를 서버 또는 캐시에서 가져오는 메서드
+    /// 환율 데이터를 서버에서 가져오는 메서드
     ///
-    /// - Parameter completion: 요청 결과를 전달하는 클로저. 성공 시 `CurrencyMeta`와 `Currency` 배열을 포함
-    /// - Note:
-    ///     - 캐시된 데이터가 있다면 네트워크 요청 없이 캐시 데이터를 반환한다.
-    ///     - 그렇지 않으면 서버에서 데이터를 요청하고, 가져온 데이터를 캐시한다.
-    func fetchCurrencies(completion: @escaping (Result<(CurrencyMeta, [Currency]), Error>) -> Void) {
-        if let meta = cachedCurrencyMeta, let currencies = cachedCurrencies {
-            completion(.success((meta, currencies)))
-
-            return
-        }
-
-        currencyDataSource.fetchCurrency { [weak self] (result: Result<CurrencyResponse, Error>) in
+    /// - Parameter completion: 요청 결과를 전달하는 클로저. 성공 시 `Currency` 배열을 반환
+    func fetchCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void) {
+        fetchCurrencyDataSource.fetchCurrencies { [weak self] (result: Result<CurrencyResponse, Error>) in
             guard let self else { return }
             switch result {
             case let .success(response):
@@ -31,7 +39,9 @@ final class DefaultCurrencyRepository: CurrencyRepository {
                 self.cachedCurrencyMeta = meta
                 self.cachedCurrencies = currencies
 
-                completion(.success((meta, currencies)))
+                self.saveCurrencies(currencies, meta)
+
+                completion(.success(currencies))
             case let .failure(error):
                 completion(.failure(error))
             }
@@ -44,5 +54,33 @@ final class DefaultCurrencyRepository: CurrencyRepository {
     /// - Returns: 해당 코드의 `Currency` 객체, 없으면 `nil`
     func currency(by code: String) -> Currency? {
         cachedCurrencies?.first(where: { $0.code == code })
+    }
+
+    func fetchLatestCurrencies() -> [Currency]? {
+        guard let latestMeta = fetchLatestCurrencyDataSource.fetchLatestMeta(),
+              let currencyEntities = fetchLatestCurrencyDataSource.fetchCurrencies(meta: latestMeta)
+        else {
+            return .none
+        }
+
+        let currencies = currencyEntities.map { mapper.map(from: $0) }
+
+        return currencies.map { mapper.map(from: $0) }
+    }
+
+    func fetchFavorites() -> [Favorite]? {
+        guard let favorites = fetchFavoriteDataSource.fetchFavorites() else { return .none }
+
+        return favorites.map { mapper.map(from: $0) }
+    }
+
+    func saveFavorite(by code: String) {
+        saveFavoriteDataSource.saveFavorite(by: code)
+    }
+
+    private func saveCurrencies(_ currencies: [Currency], _ meta: CurrencyMeta) {
+        let currencyEntities = currencies.map { mapper.map(from: $0) }
+
+        saveCurrencyDataSource.saveCurrencies(currencies: currencyEntities, meta: meta)
     }
 }

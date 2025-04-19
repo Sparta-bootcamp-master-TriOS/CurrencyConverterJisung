@@ -1,3 +1,5 @@
+import Foundation
+
 struct CurrencyMapper {
     private typealias Mapper = MapperConstant
 
@@ -10,17 +12,8 @@ struct CurrencyMapper {
     /// - Parameter response: API로부터 받은 환율 응답 데이터
     /// - Returns: 변환된 `CurrencyMeta`와 `Currency` 배열의 튜플
     func map(from response: CurrencyResponse) -> (CurrencyMeta, [Currency]) {
-        let meta = CurrencyMeta(
-            result: response.result,
-            provider: response.provider,
-            documentation: response.documentation,
-            timeLastUpdateUnix: response.timeLastUpdateUnix,
-            timeLastUpdateUTC: response.timeLastUpdateUTC,
-            timeNextUpdateUnix: response.timeNextUpdateUnix,
-            timeNextUpdateUTC: response.timeNextUpdateUTC,
-            timeEOLUnix: response.timeEOLUnix,
-            baseCode: response.baseCode
-        )
+        let updatedAt = Date(timeIntervalSince1970: TimeInterval(response.timeLastUpdateUnix))
+        let meta = CurrencyMeta(updatedAt: updatedAt)
 
         let currencies = response.rates.map { code, rate in
             Currency(
@@ -31,5 +24,36 @@ struct CurrencyMapper {
         }
 
         return (meta, currencies)
+    }
+
+    func map(from response: CurrencyEntity) -> CurrencyEntityResponse {
+        CurrencyEntityResponse(
+            code: response.code!,
+            name: response.name!,
+            rate: response.rate
+        )
+    }
+
+    func map(from response: CurrencyEntityResponse) -> Currency {
+        Currency(
+            code: response.code,
+            name: response.name,
+            rate: response.rate
+        )
+    }
+
+    func map(from response: Currency) -> CurrencyEntityResponse {
+        CurrencyEntityResponse(
+            code: response.code,
+            name: response.name,
+            rate: response.rate
+        )
+    }
+
+    func map(from response: FavoriteEntity) -> Favorite {
+        Favorite(
+            code: response.code!,
+            isFavorite: response.isFavorite
+        )
     }
 }
