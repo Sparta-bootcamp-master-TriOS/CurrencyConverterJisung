@@ -3,4 +3,5 @@ struct CurrencyDisplay {
     let name: String
     let rate: String
     var isFavorite: Bool
+    let compareEmoji: String
 }

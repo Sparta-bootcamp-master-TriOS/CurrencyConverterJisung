@@ -8,6 +8,7 @@ enum CurrencyInfoConstant {
 
     enum TableView {
         static let defaultSpacing: CGFloat = 16
+        static let rateLabelSpacing: CGFloat = -50
         static let labelStackViewSpacing: CGFloat = 4
         static let rateFormat = "%.4f"
         static let height: CGFloat = 60

@@ -27,4 +27,16 @@ final class UseCaseDIContainer {
     func makeSaveFavoriteUseCase() -> SaveFavoriteUseCase {
         DefaultSaveFavoriteUseCase(currencyRepository: currencyRepository)
     }
+
+    func makeCompareCurrencyUseCase() -> CompareCurrencyUseCase {
+        DefaultCompareCurrencyUseCase()
+    }
+
+    func makeFetchAndCompareCurrencyUseCase() -> FetchAndCompareCurrencyUseCase {
+        DefaultFetchAndCompareCurrencyUseCase(
+            fetchCurrencyUseCase: makeFetchCurrencyUseCase(),
+            fetchLatestCurrencyUseCase: makeFetchLatestCurrencyUseCase(),
+            compareCurrencyUseCase: makeCompareCurrencyUseCase()
+        )
+    }
 }

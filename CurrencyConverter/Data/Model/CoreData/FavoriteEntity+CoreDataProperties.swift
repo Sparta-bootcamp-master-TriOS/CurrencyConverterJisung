@@ -6,7 +6,7 @@ public extension FavoriteEntity {
         return NSFetchRequest<FavoriteEntity>(entityName: "FavoriteEntity")
     }
 
-    @NSManaged var code: String?
+    @NSManaged var code: String
     @NSManaged var isFavorite: Bool
 }
 

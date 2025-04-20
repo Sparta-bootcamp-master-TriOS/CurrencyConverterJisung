@@ -11,8 +11,7 @@ final class AppDIContainer {
     /// CurrencyInfoViewModel 생성
     func makeCurrencyInfoViewModel() -> CurrencyInfoViewModel {
         CurrencyInfoViewModel(
-            fetchCurrencyUseCase: useCaseDIContainer.makeFetchCurrencyUseCase(),
-            fetchLatestCurrencyUseCase: useCaseDIContainer.makeFetchLatestCurrencyUseCase(),
+            fetchAndCompareCurrencyUseCase: useCaseDIContainer.makeFetchAndCompareCurrencyUseCase(),
             fetchFavoriteUseCase: useCaseDIContainer.makeFetchFavoriteUseCase(),
             saveFavoriteUseCase: useCaseDIContainer.makeSaveFavoriteUseCase()
         )

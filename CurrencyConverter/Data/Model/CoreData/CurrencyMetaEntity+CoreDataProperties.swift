@@ -6,8 +6,8 @@ public extension CurrencyMetaEntity {
         return NSFetchRequest<CurrencyMetaEntity>(entityName: "CurrencyMetaEntity")
     }
 
-    @NSManaged var updatedAt: Date?
-    @NSManaged var currencies: NSSet?
+    @NSManaged var updatedAt: Date
+    @NSManaged var currencies: NSSet
 }
 
 // MARK: Generated accessors for currencies
