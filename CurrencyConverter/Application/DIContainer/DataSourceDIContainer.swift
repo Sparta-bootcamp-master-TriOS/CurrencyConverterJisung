@@ -13,19 +13,23 @@ final class DataSourceDIContainer {
     func makeFetchCurrencyDataSource() -> FetchCurrencyDataSource {
         FetchCurrencyDataSource(baseURL: baseURL)
     }
-
+    
+    /// FetchLatestCurrencyDataSource 생성
     func makeFetchLatestCurrencyDataSource() -> FetchLatestCurrencyDataSource {
         FetchLatestCurrencyDataSource(persistenceController: persistenceController)
     }
-
+    
+    /// SaveCurrencyDataSource 생성
     func makeSaveCurrencyDataSource() -> SaveCurrencyDataSource {
         SaveCurrencyDataSource(persistenceController: persistenceController)
     }
 
+    /// FetchFavoriteDataSource 생성
     func makeFetchFavoriteDataSource() -> FetchFavoriteDataSource {
         FetchFavoriteDataSource(persistenceController: persistenceController)
     }
-
+    
+    /// SaveFavoriteDataSource
     func makeSaveFavoriteDataSource() -> SaveFavoriteDataSource {
         SaveFavoriteDataSource(persistenceController: persistenceController)
     }

@@ -5,6 +5,9 @@ struct DefaultFetchFavoriteUseCase: FetchFavoriteUseCase {
         self.currencyRepository = currencyRepository
     }
 
+    /// CoreData에 저장된 즐겨찾기 데이터를 가져오는 메서드
+    ///
+    /// - Returns: 통화 코드와 해당 즐겨찾기 여부를 담은 딕셔너리. 없을 경우 `nil`
     func fetchFavorites() -> [String: Bool]? {
         guard let favorites = currencyRepository.fetchFavorites() else { return .none }
 

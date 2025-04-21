@@ -13,6 +13,9 @@ struct DefaultFetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseCase {
         self.compareCurrencyUseCase = compareCurrencyUseCase
     }
 
+    /// 서버에서 환율 데이터를 가져와, 이전 데이터와 비교 후 증감 여부를 포함한 환율 목록을 반환합니다.
+    ///
+    /// - Parameter completion: 결과 콜백 클로저. 성공 시 `Currency` 배열 반환, 실패 시 `Error` 반환
     func execute(completion: @escaping (Result<[Currency], Error>) -> Void) {
         fetchCurrencyUseCase.fetchCurrencies { result in
             guard let targetCurrencies = fetchLatestCurrencyUseCase.fetchLatestCurrencies() else {
