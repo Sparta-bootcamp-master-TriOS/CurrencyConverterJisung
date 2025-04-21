@@ -9,7 +9,10 @@ final class AppCoordinator {
         self.appDIContainer = appDIContainer
     }
 
-    /// 앱 실행 시 진입 화면 설정 메서드
+    /// 앱 시작 시 초기 화면을 설정하고, 마지막으로 본 화면으로 전환하는 메서드
+    ///
+    /// `FetchLastSeenSceneUseCase`를 통해 마지막으로 본 화면 정보를 조회하고,
+    /// 해당 화면이 `.currencyConverter`일 경우 저장된 통화 코드로 환율 계산기 화면으로 이동한다.
     func start() {
         let currencyInfoCoordinator = CurrencyInfoCoordinator(
             navigationController: navigationController,

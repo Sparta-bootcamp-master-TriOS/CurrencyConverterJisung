@@ -93,6 +93,9 @@ final class DefaultCurrencyRepository: CurrencyRepository {
         saveFavoriteDataSource.saveFavorite(by: code)
     }
 
+    /// 사용자가 마지막으로 본 화면 정보를 가져오는 메서드
+    ///
+    /// - Returns: 마지막으로 본 화면의 이름과 선택된 통화 코드의 튜플. 값이 없으면 `nil`
     func fetchLastSeen() -> (scene: String, code: String?)? {
         guard let lastSeen = fetchLastSeenSceneDataSource.fetchLastSeen() else {
             return .none
@@ -101,6 +104,11 @@ final class DefaultCurrencyRepository: CurrencyRepository {
         return (lastSeen.scene, lastSeen.selectedCureencyCode)
     }
 
+    /// 사용자가 마지막으로 본 화면 정보를 저장하는 메서드
+    ///
+    /// - Parameters:
+    ///   - scene: 저장할 화면의 이름
+    ///   - code: 선택된 통화 코드 (옵셔널)
     func saveLastSeen(scene: String, code: String?) {
         saveLastSeenSceneDataSource.saveLastSeen(scene: scene, code: code)
     }

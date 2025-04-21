@@ -29,15 +29,17 @@ final class DataSourceDIContainer {
         FetchFavoriteDataSource(persistenceController: persistenceController)
     }
 
-    /// SaveFavoriteDataSource
+    /// SaveFavoriteDataSource 생성
     func makeSaveFavoriteDataSource() -> SaveFavoriteDataSource {
         SaveFavoriteDataSource(persistenceController: persistenceController)
     }
-
+    
+    /// FetchLastSeenSceneDataSource 생성
     func makeFetchLastSeenSceneDataSource() -> FetchLastSeenSceneDataSource {
         FetchLastSeenSceneDataSource(persistenceController: persistenceController)
     }
-
+    
+    /// SaveLastSeenSceneDataSource 생성
     func makeSaveLastSeenSceneDataSource() -> SaveLastSeenSceneDataSource {
         SaveLastSeenSceneDataSource(persistenceController: persistenceController)
     }
