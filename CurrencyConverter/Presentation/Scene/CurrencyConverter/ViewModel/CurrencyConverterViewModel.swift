@@ -22,7 +22,7 @@ final class CurrencyConverterViewModel {
             return
         }
 
-        guard let result = convertCurrencyUseCase.convert(code: state.currency.code, amount: amount) else {
+        guard let result = convertCurrencyUseCase.execute(code: state.currency.code, amount: amount) else {
             return
         }
 

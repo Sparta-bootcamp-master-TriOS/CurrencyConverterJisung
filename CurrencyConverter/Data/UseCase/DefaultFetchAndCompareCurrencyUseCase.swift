@@ -17,8 +17,8 @@ struct DefaultFetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseCase {
     ///
     /// - Parameter completion: 결과 콜백 클로저. 성공 시 `Currency` 배열 반환, 실패 시 `Error` 반환
     func execute(completion: @escaping (Result<[Currency], Error>) -> Void) {
-        fetchCurrencyUseCase.fetchCurrencies { result in
-            guard let targetCurrencies = fetchLatestCurrencyUseCase.fetchLatestCurrencies() else {
+        fetchCurrencyUseCase.execute { result in
+            guard let targetCurrencies = fetchLatestCurrencyUseCase.execute() else {
                 completion(result)
 
                 return
@@ -31,7 +31,7 @@ struct DefaultFetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseCase {
                 let currencies: [Currency] = baseCurrencies.compactMap { base in
                     guard let target = targets[base.code] else { return .none }
 
-                    let result = compareCurrencyUseCase.compare(base: base.rate, target: target.rate)
+                    let result = compareCurrencyUseCase.execute(base: base.rate, target: target.rate)
 
                     return Currency(
                         code: base.code,

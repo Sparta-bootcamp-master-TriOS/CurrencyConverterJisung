@@ -10,12 +10,12 @@ final class UseCaseDIContainer {
     func makeFetchCurrencyUseCase() -> FetchCurrencyUseCase {
         DefaultFetchCurrencyUseCase(currencyRepository: currencyRepository)
     }
-    
+
     /// FetchLatestCurrencyUseCase 생성
     func makeFetchLatestCurrencyUseCase() -> FetchLatestCurrencyUseCase {
         DefaultFetchLatestCurrencyUseCase(currencyRepository: currencyRepository)
     }
-    
+
     /// FetchFavoriteUseCase 생성
     func makeFetchFavoriteUseCase() -> FetchFavoriteUseCase {
         DefaultFetchFavoriteUseCase(currencyRepository: currencyRepository)
@@ -25,17 +25,17 @@ final class UseCaseDIContainer {
     func makeConvertCurrencyUseCase() -> ConvertCurrencyUseCase {
         DefaultConvertCurrencyUseCase(currencyRepository: currencyRepository)
     }
-    
+
     /// SaveFavoriteUseCase 생성
     func makeSaveFavoriteUseCase() -> SaveFavoriteUseCase {
         DefaultSaveFavoriteUseCase(currencyRepository: currencyRepository)
     }
-    
+
     /// CompareCurrencyUseCase 생성
     func makeCompareCurrencyUseCase() -> CompareCurrencyUseCase {
         DefaultCompareCurrencyUseCase()
     }
-    
+
     /// FetchAndCompareCurrencyUseCase 생성
     func makeFetchAndCompareCurrencyUseCase() -> FetchAndCompareCurrencyUseCase {
         DefaultFetchAndCompareCurrencyUseCase(
