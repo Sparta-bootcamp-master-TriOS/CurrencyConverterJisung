@@ -13,7 +13,8 @@ final class AppDIContainer {
         CurrencyInfoViewModel(
             fetchAndCompareCurrencyUseCase: useCaseDIContainer.makeFetchAndCompareCurrencyUseCase(),
             fetchFavoriteUseCase: useCaseDIContainer.makeFetchFavoriteUseCase(),
-            saveFavoriteUseCase: useCaseDIContainer.makeSaveFavoriteUseCase()
+            saveFavoriteUseCase: useCaseDIContainer.makeSaveFavoriteUseCase(),
+            saveLastSeenSceneUseCase: useCaseDIContainer.makeSaveLastSeenSceneUseCase()
         )
     }
 
@@ -21,6 +22,7 @@ final class AppDIContainer {
     func makeCurrencyConverterViewModel(with currency: CurrencyDisplay) -> CurrencyConverterViewModel {
         CurrencyConverterViewModel(
             convertCurrencyUseCase: useCaseDIContainer.makeConvertCurrencyUseCase(),
+            saveLastSeenSceneUseCase: useCaseDIContainer.makeSaveLastSeenSceneUseCase(),
             currency: currency
         )
     }

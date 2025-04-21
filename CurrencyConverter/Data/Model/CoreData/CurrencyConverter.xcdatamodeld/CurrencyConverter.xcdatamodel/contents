@@ -14,4 +14,8 @@
         <attribute name="code" attributeType="String"/>
         <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
     </entity>
+    <entity name="LastSeenSceneInfoEntity" representedClassName="LastSeenSceneInfoEntity" syncable="YES">
+        <attribute name="scene" attributeType="String"/>
+        <attribute name="selectedCureencyCode" optional="YES" attributeType="String"/>
+    </entity>
 </model>

@@ -2,6 +2,7 @@ final class CurrencyInfoViewModel: ViewModelProtocol {
     private let fetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseCase
     private let fetchFavoriteUseCase: FetchFavoriteUseCase
     private let saveFavoriteUseCase: SaveFavoriteUseCase
+    private let saveLastSeenSceneUseCase: SaveLastSeenSceneUseCase
 
     private let mapper = CurrencyDisplayMapper()
 
@@ -11,11 +12,17 @@ final class CurrencyInfoViewModel: ViewModelProtocol {
     init(
         fetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseCase,
         fetchFavoriteUseCase: FetchFavoriteUseCase,
-        saveFavoriteUseCase: SaveFavoriteUseCase
+        saveFavoriteUseCase: SaveFavoriteUseCase,
+        saveLastSeenSceneUseCase: SaveLastSeenSceneUseCase
     ) {
         self.fetchAndCompareCurrencyUseCase = fetchAndCompareCurrencyUseCase
         self.fetchFavoriteUseCase = fetchFavoriteUseCase
         self.saveFavoriteUseCase = saveFavoriteUseCase
+        self.saveLastSeenSceneUseCase = saveLastSeenSceneUseCase
+    }
+
+    func viewDidAppear() {
+        saveLastSeenSceneUseCase.execute(scene: LastSeenScene.currencyInfo.rawValue, code: .none)
     }
 
     /// 환율 데이터를 요청하고, 정렬 및 필터링을 적용한 후 업데이트 콜백을 호출하는 메서드
@@ -71,6 +78,10 @@ final class CurrencyInfoViewModel: ViewModelProtocol {
         saveFavoriteUseCase.execute(by: code)
 
         action?(.didUpdate)
+    }
+
+    func displayCurrency(for code: String) -> CurrencyDisplay? {
+        return state.filteredCurrencies.first(where: { $0.code == code })
     }
 
     private func fetchFavorites() -> [String: Bool]? {

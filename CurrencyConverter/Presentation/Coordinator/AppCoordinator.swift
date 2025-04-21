@@ -18,5 +18,22 @@ final class AppCoordinator {
         let currencyInfoViewController = currencyInfoCoordinator.makeCurrencyInfoViewController()
 
         navigationController.viewControllers = [currencyInfoViewController]
+
+        let fetchLastSeenSceneUseCase = appDIContainer.useCaseDIContainer.makeFetchLastSeenSceneUseCase()
+
+        let lastScene = fetchLastSeenSceneUseCase.execute()
+
+        currencyInfoViewController.onDataReady = { [weak currencyInfoViewController] in
+            guard let viewController = currencyInfoViewController,
+                  let scene = lastScene?.scene,
+                  let code = lastScene?.code,
+                  LastSeenScene(rawValue: scene) == .currencyConverter,
+                  let currency = viewController.currencyInfoViewModel.displayCurrency(for: code)
+            else {
+                return
+            }
+
+            viewController.coordinator?.pushCurrencyConverter(with: currency)
+        }
     }
 }

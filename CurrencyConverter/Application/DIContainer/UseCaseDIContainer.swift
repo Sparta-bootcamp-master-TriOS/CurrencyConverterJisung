@@ -44,4 +44,12 @@ final class UseCaseDIContainer {
             compareCurrencyUseCase: makeCompareCurrencyUseCase()
         )
     }
+
+    func makeFetchLastSeenSceneUseCase() -> FetchLastSeenSceneUseCase {
+        DefaultFetchLastSeenSceneUseCase(currencyRepository: currencyRepository)
+    }
+
+    func makeSaveLastSeenSceneUseCase() -> SaveLastSeenSceneUseCase {
+        DefaultSaveLastSeenSceneUseCase(currencyRepository: currencyRepository)
+    }
 }

@@ -6,7 +6,9 @@ final class RepositoryDIContainer {
         fetchLatestCurrencyDataSource: dataSourceDIContainer.makeFetchLatestCurrencyDataSource(),
         saveCurrencyDataSource: dataSourceDIContainer.makeSaveCurrencyDataSource(),
         fetchFavoriteDataSource: dataSourceDIContainer.makeFetchFavoriteDataSource(),
-        saveFavoriteDataSource: dataSourceDIContainer.makeSaveFavoriteDataSource()
+        saveFavoriteDataSource: dataSourceDIContainer.makeSaveFavoriteDataSource(),
+        fetchLastSeenSceneDataSource: dataSourceDIContainer.makeFetchLastSeenSceneDataSource(),
+        saveLastSeenSceneDataSource: dataSourceDIContainer.makeSaveLastSeenSceneDataSource()
     )
 
     init(dataSourceDIContainer: DataSourceDIContainer) {
