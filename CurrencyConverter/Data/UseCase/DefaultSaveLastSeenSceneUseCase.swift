@@ -1,7 +1,9 @@
-struct DefaultSaveLastSeenSceneUseCase: SaveLastSeenSceneUseCase {
+import DomainLayer
+
+public struct DefaultSaveLastSeenSceneUseCase: SaveLastSeenSceneUseCase {
     private let currencyRepository: CurrencyRepository
 
-    init(currencyRepository: CurrencyRepository) {
+    public init(currencyRepository: CurrencyRepository) {
         self.currencyRepository = currencyRepository
     }
 
@@ -10,7 +12,7 @@ struct DefaultSaveLastSeenSceneUseCase: SaveLastSeenSceneUseCase {
     /// - Parameters:
     ///   - scene: 현재 보고 있는 화면 이름
     ///   - code: 해당 화면에서 선택된 통화 코드 (옵셔널)
-    func execute(scene: String, code: String?) {
+    public func execute(scene: String, code: String?) {
         currencyRepository.saveLastSeen(scene: scene, code: code)
     }
 }

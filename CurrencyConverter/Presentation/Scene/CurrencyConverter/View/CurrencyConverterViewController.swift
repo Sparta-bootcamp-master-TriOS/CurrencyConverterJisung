@@ -1,7 +1,7 @@
-import SnapKit
+internal import SnapKit
 import UIKit
 
-final class CurrencyConverterViewController: UIViewController {
+public final class CurrencyConverterViewController: UIViewController {
     typealias Const = CurrencyConverterConstant
 
     private let currencyConverterViewModel: CurrencyConverterViewModel
@@ -12,7 +12,7 @@ final class CurrencyConverterViewController: UIViewController {
     private let convertButton = ConvertButton()
     private let resultLabel = ResultLabel()
 
-    init(currencyConverterViewModel: CurrencyConverterViewModel) {
+    public init(currencyConverterViewModel: CurrencyConverterViewModel) {
         self.currencyConverterViewModel = currencyConverterViewModel
 
         super.init(nibName: nil, bundle: nil)
@@ -22,13 +22,13 @@ final class CurrencyConverterViewController: UIViewController {
         nil
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         currencyConverterViewModel.viewDidAppear()
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         configureUI()

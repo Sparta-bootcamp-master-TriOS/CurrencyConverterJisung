@@ -1,11 +1,13 @@
-final class CurrencyConverterViewModel {
+import DomainLayer
+
+public final class CurrencyConverterViewModel {
     private let convertCurrencyUseCase: ConvertCurrencyUseCase
     private let saveLastSeenSceneUseCase: SaveLastSeenSceneUseCase
 
     var action: ((Action) -> Void)?
     private(set) var state: State
 
-    init(
+    public init(
         convertCurrencyUseCase: ConvertCurrencyUseCase,
         saveLastSeenSceneUseCase: SaveLastSeenSceneUseCase,
         currency: CurrencyDisplay

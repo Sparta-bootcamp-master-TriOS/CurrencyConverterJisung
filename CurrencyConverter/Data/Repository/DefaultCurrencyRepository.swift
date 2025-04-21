@@ -1,6 +1,7 @@
 import CoreData
+import DomainLayer
 
-final class DefaultCurrencyRepository: CurrencyRepository {
+public final class DefaultCurrencyRepository: CurrencyRepository {
     private let fetchCurrencyDataSource: FetchCurrencyDataSource
     private let fetchLatestCurrencyDataSource: FetchLatestCurrencyDataSource
     private let saveCurrencyDataSource: SaveCurrencyDataSource
@@ -14,7 +15,7 @@ final class DefaultCurrencyRepository: CurrencyRepository {
     private var cachedCurrencyMeta: CurrencyMeta?
     private var cachedCurrencies: [Currency]?
 
-    init(
+    public init(
         fetchCurrencyDataSource: FetchCurrencyDataSource,
         fetchLatestCurrencyDataSource: FetchLatestCurrencyDataSource,
         saveCurrencyDataSource: SaveCurrencyDataSource,
@@ -35,7 +36,7 @@ final class DefaultCurrencyRepository: CurrencyRepository {
     /// 서버에서 최신 환율 데이터를 가져오는 메서드
     ///
     /// - Parameter completion: 결과를 반환하는 클로저. 성공 시 `[Currency]`를 반환하고 실패 시 `Error`를 반환한다.
-    func fetchCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void) {
+    public func fetchCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void) {
         fetchCurrencyDataSource.fetchCurrencies { [weak self] (result: Result<CurrencyResponse, Error>) in
             guard let self else { return }
             switch result {
@@ -58,14 +59,14 @@ final class DefaultCurrencyRepository: CurrencyRepository {
     ///
     /// - Parameter code: 통화 코드 (예: "USD", "KRW")
     /// - Returns: 해당 코드에 맞는 `Currency` 객체. 존재하지 않으면 `nil` 반환.
-    func currency(by code: String) -> Currency? {
+    public func currency(by code: String) -> Currency? {
         cachedCurrencies?.first(where: { $0.code == code })
     }
 
     /// CoreData에서 이전 환율 데이터를 가져오는 메서드
     ///
     /// - Returns: 이전 환율 데이터를 담은 `[Currency]`. 존재하지 않으면 `nil` 반환.
-    func fetchLatestCurrencies() -> [Currency]? {
+    public func fetchLatestCurrencies() -> [Currency]? {
         guard let latestMeta = fetchLatestCurrencyDataSource.fetchLatestMeta(),
               let currencyEntities = fetchLatestCurrencyDataSource.fetchCurrencies(meta: latestMeta)
         else {
@@ -80,7 +81,7 @@ final class DefaultCurrencyRepository: CurrencyRepository {
     /// CoreData에서 즐겨찾기 정보를 가져오는 메서드
     ///
     /// - Returns: 즐겨찾기 목록. 존재하지 않으면 `nil` 반환
-    func fetchFavorites() -> [Favorite]? {
+    public func fetchFavorites() -> [Favorite]? {
         guard let favorites = fetchFavoriteDataSource.fetchFavorites() else { return .none }
 
         return favorites.map { mapper.map(from: $0) }
@@ -89,14 +90,14 @@ final class DefaultCurrencyRepository: CurrencyRepository {
     /// 통화 코드를 기준으로 즐겨찾기 여부를 저장하는 메서드.
     ///
     /// - Parameter code: 즐겨찾기에 추가할 통화 코드
-    func saveFavorite(by code: String) {
+    public func saveFavorite(by code: String) {
         saveFavoriteDataSource.saveFavorite(by: code)
     }
 
     /// 사용자가 마지막으로 본 화면 정보를 가져오는 메서드
     ///
     /// - Returns: 마지막으로 본 화면의 이름과 선택된 통화 코드의 튜플. 값이 없으면 `nil`
-    func fetchLastSeen() -> (scene: String, code: String?)? {
+    public func fetchLastSeen() -> (scene: String, code: String?)? {
         guard let lastSeen = fetchLastSeenSceneDataSource.fetchLastSeen() else {
             return .none
         }
@@ -109,7 +110,7 @@ final class DefaultCurrencyRepository: CurrencyRepository {
     /// - Parameters:
     ///   - scene: 저장할 화면의 이름
     ///   - code: 선택된 통화 코드 (옵셔널)
-    func saveLastSeen(scene: String, code: String?) {
+    public func saveLastSeen(scene: String, code: String?) {
         saveLastSeenSceneDataSource.saveLastSeen(scene: scene, code: code)
     }
 

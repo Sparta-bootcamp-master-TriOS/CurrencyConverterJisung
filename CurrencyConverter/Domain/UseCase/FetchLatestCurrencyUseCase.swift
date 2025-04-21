@@ -1,3 +1,3 @@
-protocol FetchLatestCurrencyUseCase {
+public protocol FetchLatestCurrencyUseCase {
     func execute() -> [Currency]?
 }

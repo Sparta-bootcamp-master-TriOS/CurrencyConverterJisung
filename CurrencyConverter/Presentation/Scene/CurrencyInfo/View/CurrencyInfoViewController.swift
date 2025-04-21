@@ -1,13 +1,13 @@
-import SnapKit
+internal import SnapKit
 import UIKit
 
-final class CurrencyInfoViewController: UIViewController {
+public final class CurrencyInfoViewController: UIViewController {
     typealias Const = CurrencyInfoConstant.Label
 
-    var coordinator: CurrencyInfoCoordinator?
-    let currencyInfoViewModel: CurrencyInfoViewModel
+    public weak var delegate: CurrencyInfoViewControllerDelegate?
+    public let currencyInfoViewModel: CurrencyInfoViewModel
 
-    var onDataReady: (() -> Void)?
+    public var onDataReady: (() -> Void)?
 
     private let titleLabel = TitleLabel()
     private let searchBar = CurrencySearchBar()
@@ -15,19 +15,13 @@ final class CurrencyInfoViewController: UIViewController {
     private(set) lazy var tableView = currencyInfoView.tableView
     private let noFilteredCurrencies = NoFilteredCurrenciesLabel()
 
-    init(currencyInfoViewModel: CurrencyInfoViewModel) {
+    public init(currencyInfoViewModel: CurrencyInfoViewModel) {
         self.currencyInfoViewModel = currencyInfoViewModel
 
         super.init(nibName: nil, bundle: nil)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        currencyInfoViewModel.viewDidAppear()
-    }
-
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         configureUI()

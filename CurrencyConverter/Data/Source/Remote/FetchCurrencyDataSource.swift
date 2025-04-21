@@ -1,9 +1,9 @@
-import Alamofire
+internal import Alamofire
 
-struct FetchCurrencyDataSource {
+public struct FetchCurrencyDataSource {
     private let baseURL: String
 
-    init(baseURL: String) {
+    public init(baseURL: String) {
         self.baseURL = baseURL
     }
 

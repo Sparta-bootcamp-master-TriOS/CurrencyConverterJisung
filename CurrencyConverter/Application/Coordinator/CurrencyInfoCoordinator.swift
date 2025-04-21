@@ -1,6 +1,7 @@
+import PresentationLayer
 import UIKit
 
-final class CurrencyInfoCoordinator {
+final class CurrencyInfoCoordinator: CurrencyInfoViewControllerDelegate {
     var navigationController: UINavigationController
     private let appDIContainer: AppDIContainer
 
@@ -12,7 +13,7 @@ final class CurrencyInfoCoordinator {
     /// CurrencyInfoViewController 생성
     func makeCurrencyInfoViewController() -> CurrencyInfoViewController {
         let currencyInfoViewController = appDIContainer.makeCurrencyInfoViewController()
-        currencyInfoViewController.coordinator = self
+        currencyInfoViewController.delegate = self
 
         return currencyInfoViewController
     }

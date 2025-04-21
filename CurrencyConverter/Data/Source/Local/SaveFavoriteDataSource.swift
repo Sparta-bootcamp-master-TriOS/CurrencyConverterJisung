@@ -1,9 +1,9 @@
 import CoreData
 
-struct SaveFavoriteDataSource {
+public struct SaveFavoriteDataSource {
     private let persistenceController: PersistenceController
 
-    init(persistenceController: PersistenceController) {
+    public init(persistenceController: PersistenceController) {
         self.persistenceController = persistenceController
     }
 

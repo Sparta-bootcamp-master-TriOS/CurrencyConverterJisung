@@ -1,3 +1,6 @@
+import DataLayer
+import PresentationLayer
+
 final class AppDIContainer {
     static let persistenceController = PersistenceController.shared
     static let baseURL = AppConstant.baseURL

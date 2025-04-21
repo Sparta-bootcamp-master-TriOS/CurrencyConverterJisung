@@ -1,3 +1,5 @@
+import DomainLayer
+
 struct CurrencyDisplayMapper {
     /// `Currency` 엔티티를 화면 표시용 모델인 `CurrencyDisplay`로 매핑하는 메서드
     ///

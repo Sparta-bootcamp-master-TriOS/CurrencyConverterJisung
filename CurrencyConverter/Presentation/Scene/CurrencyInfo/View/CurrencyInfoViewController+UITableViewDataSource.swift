@@ -1,11 +1,11 @@
 import UIKit
 
 extension CurrencyInfoViewController: UITableViewDataSource {
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+    public func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         currencyInfoViewModel.state.filteredCurrencies.count
     }
 
-    func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: CurrencyInfoTableViewCell.identifier
         ) as? CurrencyInfoTableViewCell else {

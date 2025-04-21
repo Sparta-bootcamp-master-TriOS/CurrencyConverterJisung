@@ -1,4 +1,6 @@
-final class CurrencyInfoViewModel: ViewModelProtocol {
+import DomainLayer
+
+public final class CurrencyInfoViewModel: ViewModelProtocol {
     private let fetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseCase
     private let fetchFavoriteUseCase: FetchFavoriteUseCase
     private let saveFavoriteUseCase: SaveFavoriteUseCase
@@ -9,7 +11,7 @@ final class CurrencyInfoViewModel: ViewModelProtocol {
     var action: ((Action) -> Void)?
     private(set) var state = State(currencies: [], filteredCurrencies: [])
 
-    init(
+    public init(
         fetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseCase,
         fetchFavoriteUseCase: FetchFavoriteUseCase,
         saveFavoriteUseCase: SaveFavoriteUseCase,
@@ -80,7 +82,7 @@ final class CurrencyInfoViewModel: ViewModelProtocol {
         action?(.didUpdate)
     }
 
-    func displayCurrency(for code: String) -> CurrencyDisplay? {
+    public func displayCurrency(for code: String) -> CurrencyDisplay? {
         return state.filteredCurrencies.first(where: { $0.code == code })
     }
 
