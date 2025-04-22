@@ -21,6 +21,12 @@ public final class CurrencyInfoViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+    override public func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        currencyInfoViewModel.viewDidAppear()
+    }
+
     override public func viewDidLoad() {
         super.viewDidLoad()
 
