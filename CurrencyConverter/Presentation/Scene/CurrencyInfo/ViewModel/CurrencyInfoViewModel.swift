@@ -51,11 +51,15 @@ public final class CurrencyInfoViewModel: ViewModelProtocol {
     ///
     /// - Parameter keyword: 필터링에 사용할 검색어
     func filterCurrencies(with keyword: String) {
-        if keyword.isEmpty {
+        let trimmedKeyword = removeAllSpaces(in: keyword)
+
+        if trimmedKeyword.isEmpty {
             state.filteredCurrencies = state.currencies
         } else {
             state.filteredCurrencies = state.currencies.filter {
-                $0.code.contains(keyword.uppercased()) || $0.name.contains(keyword)
+                let trimmedName = removeAllSpaces(in: $0.name)
+
+                return $0.code.contains(trimmedKeyword.uppercased()) || trimmedName.contains(trimmedKeyword)
             }
         }
 
@@ -100,5 +104,13 @@ public final class CurrencyInfoViewModel: ViewModelProtocol {
         return currencies.sorted {
             ($0.isFavorite ? 0 : 1, $0.code) < ($1.isFavorite ? 0 : 1, $1.code)
         }
+    }
+
+    /// 문자열 모든 공백 제거 메서드
+    ///
+    /// - Parameter text: 공백을 제거할 문자열
+    /// - Returns: 공백이 제거된 문자열
+    private func removeAllSpaces(in text: String) -> String {
+        text.components(separatedBy: .whitespacesAndNewlines).joined()
     }
 }
