@@ -76,6 +76,7 @@ public final class CurrencyInfoViewController: UIViewController {
                 case .didFetch:
                     self?.tableView.reloadData()
                     self?.onDataReady?()
+                    self?.onDataReady = .none
                 case .didFail:
                     self?.showErrorAlert()
                 case .didUpdate:

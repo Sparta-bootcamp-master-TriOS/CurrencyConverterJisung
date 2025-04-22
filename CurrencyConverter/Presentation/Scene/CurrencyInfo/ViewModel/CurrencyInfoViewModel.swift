@@ -59,7 +59,7 @@ public final class CurrencyInfoViewModel: ViewModelProtocol {
             }
         }
 
-        action?(.didFetch)
+        action?(.didUpdate)
     }
 
     /// 선택된 환율의 즐겨찾기 상태를 토글하는 메서드
