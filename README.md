@@ -9,13 +9,15 @@
 CurrencyConverter/
 ├── Application/
 │   ├── Coordinator/
-│   │   ├── AppCoordinator.swift
-│   │   └── CurrencyInfoCoordinator.swift
+│   │   ├── Coordinator.swift
+│   │   └── Coordinator+CurrencyInfo.swift
 │   ├── DIContainer/
-│   │   ├── AppDIContainer.swift
-│   │   ├── DataSourceDIContainer.swift
-│   │   ├── RepositoryDIContainer.swift
-│   │   └── UseCaseDIContainer.swift
+│   │   ├── DIContainer.swift
+│   │   ├── DIContainer+DataSource.swift
+│   │   ├── DIContainer+Repository.swift
+│   │   ├── DIContainer+UseCase.swift
+│   │   ├── DIContainer+ViewController.swift
+│   │   └── DIContainer+ViewModel.swift
 │   ├── AppConstant.swift
 │   ├── AppDelegate.swift
 │   └── SceneDelegate.swift
