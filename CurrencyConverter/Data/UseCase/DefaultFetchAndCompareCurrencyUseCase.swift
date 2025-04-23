@@ -1,6 +1,6 @@
 import DomainLayer
 
-public struct DefaultFetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseCase {
+public final class DefaultFetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseCase {
     private let fetchCurrencyUseCase: FetchCurrencyUseCase
     private let fetchLatestCurrencyUseCase: FetchLatestCurrencyUseCase
     private let compareCurrencyUseCase: CompareCurrencyUseCase
@@ -19,8 +19,8 @@ public struct DefaultFetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseC
     ///
     /// - Parameter completion: 결과 콜백 클로저. 성공 시 `Currency` 배열 반환, 실패 시 `Error` 반환
     public func execute(completion: @escaping (Result<[Currency], Error>) -> Void) {
-        fetchCurrencyUseCase.execute { result in
-            guard let targetCurrencies = fetchLatestCurrencyUseCase.execute() else {
+        fetchCurrencyUseCase.execute { [weak self] result in
+            guard let targetCurrencies = self?.fetchLatestCurrencyUseCase.execute() else {
                 completion(result)
 
                 return
@@ -30,10 +30,10 @@ public struct DefaultFetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseC
             case let .success(baseCurrencies):
                 let targets = Dictionary(uniqueKeysWithValues: targetCurrencies.map { ($0.code, $0) })
 
-                let currencies: [Currency] = baseCurrencies.compactMap { base in
+                let currencies: [Currency] = baseCurrencies.compactMap { [weak self] base in
                     guard let target = targets[base.code] else { return .none }
 
-                    let result = compareCurrencyUseCase.execute(base: base.rate, target: target.rate)
+                    let result = self?.compareCurrencyUseCase.execute(base: base.rate, target: target.rate)
 
                     return Currency(
                         code: base.code,

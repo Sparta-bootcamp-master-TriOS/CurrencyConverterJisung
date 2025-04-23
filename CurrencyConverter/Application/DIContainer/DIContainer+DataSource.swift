@@ -1,15 +1,7 @@
 import CoreData
 import DataLayer
 
-final class DataSourceDIContainer {
-    private let persistenceController: PersistenceController
-    private let baseURL: String
-
-    init(persistenceController: PersistenceController, baseURL: String) {
-        self.persistenceController = persistenceController
-        self.baseURL = baseURL
-    }
-
+extension DIContainer {
     /// CurrencyDataSource 생성
     func makeFetchCurrencyDataSource() -> FetchCurrencyDataSource {
         FetchCurrencyDataSource(baseURL: baseURL)

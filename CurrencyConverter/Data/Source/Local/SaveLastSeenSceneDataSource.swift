@@ -1,4 +1,4 @@
-public struct SaveLastSeenSceneDataSource {
+public final class SaveLastSeenSceneDataSource {
     private let persistenceController: PersistenceController
 
     public init(persistenceController: PersistenceController) {
@@ -10,7 +10,7 @@ public struct SaveLastSeenSceneDataSource {
     /// - Parameters:
     ///   - scene: 사용자가 마지막으로 본 화면의 이름
     ///   - code: 해당 화면에서 선택된 통화 코드 (옵셔널)
-    func saveLastSeen(scene: String, code: String?) {
+    func execute(scene: String, code: String?) {
         let context = persistenceController.context
 
         let request = LastSeenSceneInfoEntity.fetchRequest()
@@ -26,6 +26,6 @@ public struct SaveLastSeenSceneDataSource {
             entity.selectedCureencyCode = code
         }
 
-        persistenceController.saveContext()
+        persistenceController.save()
     }
 }

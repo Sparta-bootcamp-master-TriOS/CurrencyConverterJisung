@@ -19,6 +19,8 @@
 		BF14EC2E2DB64E5B000A9333 /* DomainLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF14EBF72DB64D94000A9333 /* DomainLayer.framework */; };
 		BF14EC2F2DB64E5B000A9333 /* DomainLayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF14EBF72DB64D94000A9333 /* DomainLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF14EC342DB64E5E000A9333 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF14EC332DB64E5E000A9333 /* SnapKit */; };
+		BF928FEB2DB76913008DDB3C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BF73A1242DAD003400F14576 /* Alamofire */; };
+		BF928FEC2DB76913008DDB3C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF73A1272DAD004700F14576 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,7 +115,11 @@
 				Domain/Entity/Favorite.swift,
 				Domain/Entity/LastSeenScene.swift,
 				Domain/Entity/LastSeenSceneInfo.swift,
+				"Domain/Repository/CurrencyCacheRepository .swift",
 				Domain/Repository/CurrencyRepository.swift,
+				Domain/Repository/FavoriteRepository.swift,
+				Domain/Repository/LastSeenSceneRepository.swift,
+				Domain/Repository/LatestCurrencyRepository.swift,
 				Domain/UseCase/CompareCurrencyUseCase.swift,
 				Domain/UseCase/ConvertCurrencyUseCase.swift,
 				Domain/UseCase/FetchAndCompareCurrencyUseCase.swift,
@@ -141,7 +147,11 @@
 				"Data/Model/CoreData/LastSeenSceneInfoEntity+CoreDataProperties.swift",
 				Data/Model/CurrencyEntityResponse.swift,
 				Data/Model/CurrencyResponse.swift,
+				Data/Repository/DefaultCurrencyCacheRepository.swift,
 				Data/Repository/DefaultCurrencyRepository.swift,
+				Data/Repository/DefaultFavoriteRepository.swift,
+				Data/Repository/DefaultLastSeenSceneRepository.swift,
+				Data/Repository/DefaultLatestCurrencyRepository.swift,
 				Data/Source/Local/FetchFavoriteDataSource.swift,
 				Data/Source/Local/FetchLastSeenSceneDataSource.swift,
 				Data/Source/Local/FetchLatestCurrencyDataSource.swift,
@@ -203,6 +213,7 @@
 		BF73A11D2DACFEBB00F14576 /* Exceptions for "CurrencyConverter" folder in "CurrencyConverter" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"/Localized: Resource/LaunchScreen.storyboard",
 				Data/Mapper/CurrencyMapper.swift,
 				Data/Mapper/MapperConstant.swift,
 				Data/Model/CoreData/CurrencyConverter.xcdatamodeld,
@@ -216,7 +227,11 @@
 				"Data/Model/CoreData/LastSeenSceneInfoEntity+CoreDataProperties.swift",
 				Data/Model/CurrencyEntityResponse.swift,
 				Data/Model/CurrencyResponse.swift,
+				Data/Repository/DefaultCurrencyCacheRepository.swift,
 				Data/Repository/DefaultCurrencyRepository.swift,
+				Data/Repository/DefaultFavoriteRepository.swift,
+				Data/Repository/DefaultLastSeenSceneRepository.swift,
+				Data/Repository/DefaultLatestCurrencyRepository.swift,
 				Data/Source/Local/FetchFavoriteDataSource.swift,
 				Data/Source/Local/FetchLastSeenSceneDataSource.swift,
 				Data/Source/Local/FetchLatestCurrencyDataSource.swift,
@@ -240,7 +255,11 @@
 				Domain/Entity/Favorite.swift,
 				Domain/Entity/LastSeenScene.swift,
 				Domain/Entity/LastSeenSceneInfo.swift,
+				"Domain/Repository/CurrencyCacheRepository .swift",
 				Domain/Repository/CurrencyRepository.swift,
+				Domain/Repository/FavoriteRepository.swift,
+				Domain/Repository/LastSeenSceneRepository.swift,
+				Domain/Repository/LatestCurrencyRepository.swift,
 				Domain/UseCase/CompareCurrencyUseCase.swift,
 				Domain/UseCase/ConvertCurrencyUseCase.swift,
 				Domain/UseCase/FetchAndCompareCurrencyUseCase.swift,
@@ -342,6 +361,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF928FEC2DB76913008DDB3C /* SnapKit in Frameworks */,
+				BF928FEB2DB76913008DDB3C /* Alamofire in Frameworks */,
 				BF14EC0F2DB64E24000A9333 /* DataLayer.framework in Frameworks */,
 				BF14EBFD2DB64D94000A9333 /* DomainLayer.framework in Frameworks */,
 				BF14EC282DB64E4C000A9333 /* PresentationLayer.framework in Frameworks */,

@@ -7,6 +7,8 @@ import Foundation
 struct CurrencyMapper {
     private typealias Mapper = MapperConstant
 
+    static let shared = CurrencyMapper()
+
     /// API 응답 모델(`CurrencyResponse`)을 도메인 모델로 매핑하는 메서드
     ///
     /// `CurrencyMeta`는 업데이트된 시간을 포함하고, `Currency` 배열은 각 통화 코드에 대한 환율과 국가명을 포함한다.
