@@ -46,6 +46,7 @@ CurrencyConverter/
 │   │   │   ├── FetchLastSeenSceneDataSource.swift
 │   │   │   ├── FetchLatestCurrencyDataSource.swift
 │   │   │   ├── PersistenceController.swift
+│   │   │   ├── PersistenceController+Mock.swift
 │   │   │   ├── SaveCurrencyDataSource.swift
 │   │   │   ├── SaveFavoriteDataSource.swift
 │   │   │   └── SaveLastSeenSceneDataSource.swift
