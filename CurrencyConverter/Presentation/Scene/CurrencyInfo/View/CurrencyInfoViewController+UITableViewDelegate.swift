@@ -1,15 +1,15 @@
 import UIKit
 
 extension CurrencyInfoViewController: UITableViewDelegate {
-    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
+    public func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         CurrencyInfoConstant.TableView.height
     }
 
-    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
         let currency = currencyInfoViewModel.state.filteredCurrencies[indexPath.row]
 
-        coordinator?.pushCurrencyConverter(with: currency)
+        delegate?.pushCurrencyConverter(with: currency)
     }
 }

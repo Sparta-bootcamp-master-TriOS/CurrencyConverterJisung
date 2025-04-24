@@ -1,8 +1,10 @@
+import DomainLayer
 import UIKit
 
 final class AppCoordinator {
     var navigationController: UINavigationController
     private let appDIContainer: AppDIContainer
+    private var currencyInfoCoordinator: CurrencyInfoCoordinator?
 
     init(navigationController: UINavigationController, appDIContainer: AppDIContainer) {
         self.navigationController = navigationController
@@ -14,11 +16,14 @@ final class AppCoordinator {
     /// `FetchLastSeenSceneUseCase`를 통해 마지막으로 본 화면 정보를 조회하고,
     /// 해당 화면이 `.currencyConverter`일 경우 저장된 통화 코드로 환율 계산기 화면으로 이동한다.
     func start() {
-        let currencyInfoCoordinator = CurrencyInfoCoordinator(
+        let coordinator = CurrencyInfoCoordinator(
             navigationController: navigationController,
             appDIContainer: appDIContainer
         )
-        let currencyInfoViewController = currencyInfoCoordinator.makeCurrencyInfoViewController()
+
+        currencyInfoCoordinator = coordinator
+
+        let currencyInfoViewController = coordinator.makeCurrencyInfoViewController()
 
         navigationController.viewControllers = [currencyInfoViewController]
 
@@ -36,7 +41,7 @@ final class AppCoordinator {
                 return
             }
 
-            viewController.coordinator?.pushCurrencyConverter(with: currency)
+            viewController.delegate?.pushCurrencyConverter(with: currency)
         }
     }
 }

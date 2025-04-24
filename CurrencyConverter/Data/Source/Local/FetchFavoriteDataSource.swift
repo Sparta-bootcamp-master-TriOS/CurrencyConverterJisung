@@ -1,7 +1,7 @@
-struct FetchFavoriteDataSource {
+public struct FetchFavoriteDataSource {
     private let persistenceController: PersistenceController
 
-    init(persistenceController: PersistenceController) {
+    public init(persistenceController: PersistenceController) {
         self.persistenceController = persistenceController
     }
 

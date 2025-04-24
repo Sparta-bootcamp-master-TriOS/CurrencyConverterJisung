@@ -1,4 +1,5 @@
 import CoreData
+import DataLayer
 
 final class DataSourceDIContainer {
     private let persistenceController: PersistenceController

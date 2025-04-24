@@ -1,11 +1,11 @@
 import Foundation
 
-struct FetchLatestCurrencyDataSource {
+public struct FetchLatestCurrencyDataSource {
     typealias Const = SourceConstant.Local
 
     private let persistenceController: PersistenceController
 
-    init(persistenceController: PersistenceController) {
+    public init(persistenceController: PersistenceController) {
         self.persistenceController = persistenceController
     }
 

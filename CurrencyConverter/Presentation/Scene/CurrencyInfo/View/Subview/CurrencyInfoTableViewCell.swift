@@ -1,4 +1,4 @@
-import SnapKit
+internal import SnapKit
 import UIKit
 
 final class CurrencyInfoTableViewCell: UITableViewCell, ReuseIdentifier {

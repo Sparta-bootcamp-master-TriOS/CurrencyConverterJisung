@@ -1,14 +1,16 @@
-struct DefaultFetchLatestCurrencyUseCase: FetchLatestCurrencyUseCase {
+import DomainLayer
+
+public struct DefaultFetchLatestCurrencyUseCase: FetchLatestCurrencyUseCase {
     private let currencyRepository: CurrencyRepository
 
-    init(currencyRepository: CurrencyRepository) {
+    public init(currencyRepository: CurrencyRepository) {
         self.currencyRepository = currencyRepository
     }
 
     /// 이전 환율 데이터를 가져오는 메서드
     ///
     /// - Returns: `Currency` 객체 배열, 없을 경우 `nil`
-    func execute() -> [Currency]? {
+    public func execute() -> [Currency]? {
         currencyRepository.fetchLatestCurrencies()
     }
 }

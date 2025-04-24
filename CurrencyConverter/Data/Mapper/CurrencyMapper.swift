@@ -1,3 +1,4 @@
+import DomainLayer
 import Foundation
 
 /// 다양한 데이터 모델 간의 변환을 담당하는 유틸리티 구조체

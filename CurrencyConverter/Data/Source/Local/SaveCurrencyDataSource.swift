@@ -1,9 +1,10 @@
 import CoreData
+import DomainLayer
 
-struct SaveCurrencyDataSource {
+public struct SaveCurrencyDataSource {
     private let persistenceController: PersistenceController
 
-    init(persistenceController: PersistenceController) {
+    public init(persistenceController: PersistenceController) {
         self.persistenceController = persistenceController
     }
 

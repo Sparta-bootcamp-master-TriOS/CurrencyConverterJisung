@@ -1,4 +1,4 @@
-protocol CurrencyRepository {
+public protocol CurrencyRepository {
     func fetchCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void)
     func fetchLatestCurrencies() -> [Currency]?
     func fetchFavorites() -> [Favorite]?

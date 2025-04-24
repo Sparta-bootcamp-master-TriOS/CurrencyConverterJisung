@@ -1,5 +1,9 @@
 import Foundation
 
-struct CurrencyMeta {
-    let updatedAt: Date
+public struct CurrencyMeta {
+    public let updatedAt: Date
+
+    public init(updatedAt: Date) {
+        self.updatedAt = updatedAt
+    }
 }

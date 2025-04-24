@@ -1,3 +1,6 @@
+import DataLayer
+import DomainLayer
+
 final class UseCaseDIContainer {
     private let repositoryDIContainer: RepositoryDIContainer
     private lazy var currencyRepository = repositoryDIContainer.makeCurrencyRepository()
