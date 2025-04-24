@@ -1,7 +1,7 @@
 import UIKit
 
 enum AlertManager {
-    typealias Const = SharedConstant.Alert
+    typealias Const = AlertConstant
 
     /// 에러 메시지를 표시하는 Alert 생성 메서드
     ///

@@ -7,11 +7,19 @@ final class AppDIContainer {
     lazy var repositoryDIContainer = RepositoryDIContainer(dataSourceDIContainer: dataSourceDIContainer)
     lazy var useCaseDIContainer = UseCaseDIContainer(repositoryDIContainer: repositoryDIContainer)
 
+    // MARK: - ViewModel
+
     func makeCurrencyInfoViewModel() -> CurrencyInfoViewModel {
         CurrencyInfoViewModel(fetchCurrencyUseCase: useCaseDIContainer.makeFetchCurrencyUseCase())
     }
 
+    // MARK: - ViewController
+
     func makeCurrencyInfoViewController() -> CurrencyInfoViewController {
         CurrencyInfoViewController(currencyInfoViewModel: makeCurrencyInfoViewModel())
+    }
+
+    func makeCurrencyConverterViewController(code: String, name: String) -> CurrencyConverterViewController {
+        CurrencyConverterViewController(code: code, name: name)
     }
 }
