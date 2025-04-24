@@ -1,4 +1,5 @@
 final class AppDIContainer {
+    /// Mock 데이터는 `PersistenceController.makeInMemory()`를 사용
     static let persistenceController = PersistenceController.shared
     static let baseURL = AppConstant.baseURL
 
@@ -11,8 +12,7 @@ final class AppDIContainer {
     /// CurrencyInfoViewModel 생성
     func makeCurrencyInfoViewModel() -> CurrencyInfoViewModel {
         CurrencyInfoViewModel(
-            fetchCurrencyUseCase: useCaseDIContainer.makeFetchCurrencyUseCase(),
-            fetchLatestCurrencyUseCase: useCaseDIContainer.makeFetchLatestCurrencyUseCase(),
+            fetchAndCompareCurrencyUseCase: useCaseDIContainer.makeFetchAndCompareCurrencyUseCase(),
             fetchFavoriteUseCase: useCaseDIContainer.makeFetchFavoriteUseCase(),
             saveFavoriteUseCase: useCaseDIContainer.makeSaveFavoriteUseCase()
         )

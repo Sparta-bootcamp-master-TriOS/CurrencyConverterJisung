@@ -1,6 +1,5 @@
 final class CurrencyInfoViewModel: ViewModelProtocol {
-    private let fetchCurrencyUseCase: FetchCurrencyUseCase
-    private let fetchLatestCurrencyUseCase: FetchLatestCurrencyUseCase
+    private let fetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseCase
     private let fetchFavoriteUseCase: FetchFavoriteUseCase
     private let saveFavoriteUseCase: SaveFavoriteUseCase
 
@@ -10,25 +9,22 @@ final class CurrencyInfoViewModel: ViewModelProtocol {
     private(set) var state = State(currencies: [], filteredCurrencies: [])
 
     init(
-        fetchCurrencyUseCase: FetchCurrencyUseCase,
-        fetchLatestCurrencyUseCase: FetchLatestCurrencyUseCase,
+        fetchAndCompareCurrencyUseCase: FetchAndCompareCurrencyUseCase,
         fetchFavoriteUseCase: FetchFavoriteUseCase,
         saveFavoriteUseCase: SaveFavoriteUseCase
     ) {
-        self.fetchCurrencyUseCase = fetchCurrencyUseCase
-        self.fetchLatestCurrencyUseCase = fetchLatestCurrencyUseCase
+        self.fetchAndCompareCurrencyUseCase = fetchAndCompareCurrencyUseCase
         self.fetchFavoriteUseCase = fetchFavoriteUseCase
         self.saveFavoriteUseCase = saveFavoriteUseCase
     }
 
     /// 환율 데이터를 요청하고, 정렬 및 필터링을 적용한 후 업데이트 콜백을 호출하는 메서드
     func fetchCurrencies() {
-        fetchCurrencyUseCase.fetchCurrencies { [weak self] result in
+        fetchAndCompareCurrencyUseCase.execute { [weak self] result in
             guard let self else { return }
 
             switch result {
             case let .success(entities):
-                fetchLatestCurrencies()
                 let favoriates = self.fetchFavorites()
 
                 let currencies = entities.map { self.mapper.map(from: $0, favoriates?[$0.code]) }
@@ -75,12 +71,6 @@ final class CurrencyInfoViewModel: ViewModelProtocol {
         saveFavoriteUseCase.saveFavorite(by: code)
 
         action?(.didUpdate)
-    }
-
-    private func fetchLatestCurrencies() {
-        if let entities = fetchLatestCurrencyUseCase.fetchLatestCurrencies() {
-            state.latestCurrencies = entities.map { self.mapper.map(from: $0, false) }
-        }
     }
 
     private func fetchFavorites() -> [String: Bool]? {

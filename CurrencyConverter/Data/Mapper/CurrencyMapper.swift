@@ -28,8 +28,8 @@ struct CurrencyMapper {
 
     func map(from response: CurrencyEntity) -> CurrencyEntityResponse {
         CurrencyEntityResponse(
-            code: response.code!,
-            name: response.name!,
+            code: response.code,
+            name: response.name,
             rate: response.rate
         )
     }
@@ -52,7 +52,7 @@ struct CurrencyMapper {
 
     func map(from response: FavoriteEntity) -> Favorite {
         Favorite(
-            code: response.code!,
+            code: response.code,
             isFavorite: response.isFavorite
         )
     }

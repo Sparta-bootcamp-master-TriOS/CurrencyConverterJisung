@@ -10,7 +10,17 @@ struct CurrencyDisplayMapper {
             code: currency.code,
             name: currency.name,
             rate: String(format: CurrencyInfoConstant.TableView.rateFormat, currency.rate),
-            isFavorite: isFavorite ?? false
+            isFavorite: isFavorite ?? false,
+            compareEmoji: {
+                switch currency.hasIncreased {
+                case .some(true):
+                    return "🔼"
+                case .some(false):
+                    return "🔽"
+                case .none:
+                    return ""
+                }
+            }()
         )
     }
 }

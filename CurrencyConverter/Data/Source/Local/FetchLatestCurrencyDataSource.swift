@@ -15,6 +15,7 @@ struct FetchLatestCurrencyDataSource {
         let request = CurrencyMetaEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: Const.key, ascending: false)]
         request.fetchLimit = Const.fetchLimit
+        request.fetchOffset = Const.fetchOffset
 
         let result = try? context.fetch(request)
 

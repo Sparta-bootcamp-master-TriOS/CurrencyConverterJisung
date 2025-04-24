@@ -6,8 +6,8 @@ public extension CurrencyEntity {
         return NSFetchRequest<CurrencyEntity>(entityName: "CurrencyEntity")
     }
 
-    @NSManaged var code: String?
-    @NSManaged var name: String?
+    @NSManaged var code: String
+    @NSManaged var name: String
     @NSManaged var rate: Double
     @NSManaged var meta: CurrencyMetaEntity?
 }
