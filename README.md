@@ -39,7 +39,11 @@ CurrencyConverter/
 │   │   ├── CurrencyEntityResponse.swift
 │   │   └── CurrencyResponse.swift
 │   ├── Repository/
-│   │   └── DefaultCurrencyRepository.swift
+│   │   ├── DefaultCurrencyCacheRepository.swift
+│   │   ├── DefaultCurrencyRepository.swift
+│   │   ├── DefaultFavoriteRepository.swift
+│   │   ├── DefaultLastSeenSceneRepository.swift
+│   │   └── DefaultLatestCurrencyRepository.swift
 │   ├── Source/
 │   │   ├── Local/
 │   │   │   ├── FetchFavoriteDataSource.swift
@@ -67,9 +71,15 @@ CurrencyConverter/
 │   ├── Entity/
 │   │   ├── Currency.swift
 │   │   ├── CurrencyMeta.swift
-│   │   └── Favorite.swift
+│   │   ├── Favorite.swift
+│   │   ├── LastSeenScene.swift
+│   │   └── LastSeenSceneInfo.swift
 │   ├── Repository/
-│   │   └── CurrencyRepository.swift
+│   │   ├── CurrencyCacheRepository.swift
+│   │   ├── CurrencyRepository.swift
+│   │   ├── FavoriteRepository.swift
+│   │   ├── LastSeenSceneRepository.swift
+│   │   └── LatestCurrencyRepository.swift
 │   └── UseCase/
 │   │   ├── CompareCurrencyUseCase.swift
 │   │   ├── ConvertCurrencyUseCase.swift
@@ -84,9 +94,7 @@ CurrencyConverter/
 │   ├── Mapper/
 │   │   └── CurrencyDisplayMapper.swift
 │   ├── Model/
-│   │   ├── CurrencyDisplay.swift
-│   │   ├── LastSeenScene.swift
-│   │   └── LastSeenSceneInfo.swift
+│   │   └── CurrencyDisplay.swift
 │   └── Scene/
 │       ├── CurrencyConverter/
 │       │   ├── View/
@@ -112,7 +120,8 @@ CurrencyConverter/
 │       │   │   ├── CurrencyInfoViewController.swift
 │       │   │   ├── CurrencyInfoViewController+UISearchBarDelegate.swift
 │       │   │   ├── CurrencyInfoViewController+UITableViewDataSource.swift
-│       │   │   └── CurrencyInfoViewController+UITableViewDelegate.swift
+│       │   │   ├── CurrencyInfoViewController+UITableViewDelegate.swift
+│       │   │   └── CurrencyInfoViewControllerDelegate.swift
 │       │   ├── ViewModel/
 │       │   │   ├── CurrencyInfoViewModel.swift
 │       │   │   ├── CurrencyInfoViewModel+Action.swift
