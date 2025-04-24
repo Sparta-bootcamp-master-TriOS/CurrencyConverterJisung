@@ -19,4 +19,8 @@ enum CurrencyInfoConstant {
     enum Alert {
         static let message = "데이터를 불러올 수 없습니다."
     }
+
+    enum Label {
+        static let noFilteredCurrencies = "검색 결과 없음"
+    }
 }

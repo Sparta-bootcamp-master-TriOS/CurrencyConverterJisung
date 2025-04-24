@@ -9,6 +9,7 @@ final class CurrencyInfoViewController: UIViewController {
     private let currencyInfoView = CurrencyInfoView()
     private(set) lazy var tableView = currencyInfoView.tableView
     private let searchBar = CurrencySearchBar()
+    private let noFilteredCurrencies = NoFilteredCurrenciesLabel()
 
     init(currencyInfoViewModel: CurrencyInfoViewModel) {
         self.currencyInfoViewModel = currencyInfoViewModel
@@ -32,7 +33,7 @@ final class CurrencyInfoViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .background
 
-        [searchBar, currencyInfoView]
+        [searchBar, currencyInfoView, noFilteredCurrencies]
             .forEach { view.addSubview($0) }
 
         searchBar.snp.makeConstraints {
@@ -43,6 +44,10 @@ final class CurrencyInfoViewController: UIViewController {
         currencyInfoView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom)
             $0.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+        }
+
+        noFilteredCurrencies.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
 
@@ -73,5 +78,12 @@ final class CurrencyInfoViewController: UIViewController {
     private func showErrorAlert() {
         let alert = AlertManager.errorAlert(message: CurrencyInfoConstant.Alert.message)
         present(alert, animated: true)
+    }
+
+    func updateUIAfterFiltering() {
+        let isEmpty = currencyInfoViewModel.filteredCurrencies.isEmpty
+        
+        noFilteredCurrencies.isHidden = !isEmpty
+        tableView.isHidden = isEmpty
     }
 }
