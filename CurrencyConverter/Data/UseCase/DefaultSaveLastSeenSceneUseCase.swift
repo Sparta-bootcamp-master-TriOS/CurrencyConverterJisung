@@ -1,10 +1,10 @@
 import DomainLayer
 
-public struct DefaultSaveLastSeenSceneUseCase: SaveLastSeenSceneUseCase {
-    private let currencyRepository: CurrencyRepository
+public final class DefaultSaveLastSeenSceneUseCase: SaveLastSeenSceneUseCase {
+    private let lastSeenSceneRepository: LastSeenSceneRepository
 
-    public init(currencyRepository: CurrencyRepository) {
-        self.currencyRepository = currencyRepository
+    public init(lastSeenSceneRepository: LastSeenSceneRepository) {
+        self.lastSeenSceneRepository = lastSeenSceneRepository
     }
 
     /// 마지막으로 본 화면 정보를 저장하는 메서드
@@ -13,6 +13,6 @@ public struct DefaultSaveLastSeenSceneUseCase: SaveLastSeenSceneUseCase {
     ///   - scene: 현재 보고 있는 화면 이름
     ///   - code: 해당 화면에서 선택된 통화 코드 (옵셔널)
     public func execute(scene: String, code: String?) {
-        currencyRepository.saveLastSeen(scene: scene, code: code)
+        lastSeenSceneRepository.save(scene: scene, code: code)
     }
 }

@@ -1,7 +1,7 @@
 import CoreData
 import DomainLayer
 
-public struct SaveCurrencyDataSource {
+public final class SaveCurrencyDataSource {
     private let persistenceController: PersistenceController
 
     public init(persistenceController: PersistenceController) {
@@ -15,7 +15,7 @@ public struct SaveCurrencyDataSource {
     /// - Parameters:
     ///   - currencies: 저장할 환율 정보 리스트 (`CurrencyEntityResponse`)
     ///   - meta: 저장할 환율 메타 정보 (`CurrencyMeta`)
-    func saveCurrencies(currencies: [CurrencyEntityResponse], meta: CurrencyMeta) {
+    func execute(currencies: [CurrencyEntityResponse], meta: CurrencyMeta) {
         let context = persistenceController.context
 
         let request = CurrencyMetaEntity.fetchRequest()
@@ -34,6 +34,6 @@ public struct SaveCurrencyDataSource {
             entity.meta = metaEntity
         }
 
-        persistenceController.saveContext()
+        persistenceController.save()
     }
 }

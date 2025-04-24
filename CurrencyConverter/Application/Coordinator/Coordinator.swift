@@ -1,14 +1,13 @@
 import DomainLayer
 import UIKit
 
-final class AppCoordinator {
+final class Coordinator {
     var navigationController: UINavigationController
-    private let appDIContainer: AppDIContainer
-    private var currencyInfoCoordinator: CurrencyInfoCoordinator?
+    let diContainer: DIContainer
 
-    init(navigationController: UINavigationController, appDIContainer: AppDIContainer) {
+    init(navigationController: UINavigationController, diContainer: DIContainer) {
         self.navigationController = navigationController
-        self.appDIContainer = appDIContainer
+        self.diContainer = diContainer
     }
 
     /// 앱 시작 시 초기 화면을 설정하고, 마지막으로 본 화면으로 전환하는 메서드
@@ -16,18 +15,11 @@ final class AppCoordinator {
     /// `FetchLastSeenSceneUseCase`를 통해 마지막으로 본 화면 정보를 조회하고,
     /// 해당 화면이 `.currencyConverter`일 경우 저장된 통화 코드로 환율 계산기 화면으로 이동한다.
     func start() {
-        let coordinator = CurrencyInfoCoordinator(
-            navigationController: navigationController,
-            appDIContainer: appDIContainer
-        )
-
-        currencyInfoCoordinator = coordinator
-
-        let currencyInfoViewController = coordinator.makeCurrencyInfoViewController()
+        let currencyInfoViewController = makeCurrencyInfoViewController()
 
         navigationController.viewControllers = [currencyInfoViewController]
 
-        let fetchLastSeenSceneUseCase = appDIContainer.useCaseDIContainer.makeFetchLastSeenSceneUseCase()
+        let fetchLastSeenSceneUseCase = diContainer.makeFetchLastSeenSceneUseCase()
 
         let lastScene = fetchLastSeenSceneUseCase.execute()
 

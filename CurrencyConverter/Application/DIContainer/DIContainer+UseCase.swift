@@ -1,37 +1,33 @@
 import DataLayer
 import DomainLayer
 
-final class UseCaseDIContainer {
-    private let repositoryDIContainer: RepositoryDIContainer
-    private lazy var currencyRepository = repositoryDIContainer.makeCurrencyRepository()
-
-    init(repositoryDIContainer: RepositoryDIContainer) {
-        self.repositoryDIContainer = repositoryDIContainer
-    }
-
+extension DIContainer {
     /// FetchCurrencyUseCase 생성
     func makeFetchCurrencyUseCase() -> FetchCurrencyUseCase {
-        DefaultFetchCurrencyUseCase(currencyRepository: currencyRepository)
+        DefaultFetchCurrencyUseCase(
+            currencyRepository: makeCurrencyRepository(),
+            currencyCacheRepository: currencyCacheRepository
+        )
     }
 
     /// FetchLatestCurrencyUseCase 생성
     func makeFetchLatestCurrencyUseCase() -> FetchLatestCurrencyUseCase {
-        DefaultFetchLatestCurrencyUseCase(currencyRepository: currencyRepository)
+        DefaultFetchLatestCurrencyUseCase(latestCurrencyRepository: makeLatestCurrencyRepository())
     }
 
     /// FetchFavoriteUseCase 생성
     func makeFetchFavoriteUseCase() -> FetchFavoriteUseCase {
-        DefaultFetchFavoriteUseCase(currencyRepository: currencyRepository)
-    }
-
-    /// ConvertCurrencyUseCase 생성
-    func makeConvertCurrencyUseCase() -> ConvertCurrencyUseCase {
-        DefaultConvertCurrencyUseCase(currencyRepository: currencyRepository)
+        DefaultFetchFavoriteUseCase(favoriteRepository: makeFavoriteRepository())
     }
 
     /// SaveFavoriteUseCase 생성
     func makeSaveFavoriteUseCase() -> SaveFavoriteUseCase {
-        DefaultSaveFavoriteUseCase(currencyRepository: currencyRepository)
+        DefaultSaveFavoriteUseCase(favoriteRepository: makeFavoriteRepository())
+    }
+
+    /// ConvertCurrencyUseCase 생성
+    func makeConvertCurrencyUseCase() -> ConvertCurrencyUseCase {
+        DefaultConvertCurrencyUseCase(currencyCacheRepository: currencyCacheRepository)
     }
 
     /// CompareCurrencyUseCase 생성
@@ -50,11 +46,11 @@ final class UseCaseDIContainer {
 
     /// FetchLastSeenSceneUseCase 생성
     func makeFetchLastSeenSceneUseCase() -> FetchLastSeenSceneUseCase {
-        DefaultFetchLastSeenSceneUseCase(currencyRepository: currencyRepository)
+        DefaultFetchLastSeenSceneUseCase(lastSeenSceneRepository: makeLastSeenSceneRepository())
     }
 
     /// SaveLastSeenSceneUseCase 생성
     func makeSaveLastSeenSceneUseCase() -> SaveLastSeenSceneUseCase {
-        DefaultSaveLastSeenSceneUseCase(currencyRepository: currencyRepository)
+        DefaultSaveLastSeenSceneUseCase(lastSeenSceneRepository: makeLastSeenSceneRepository())
     }
 }

@@ -25,7 +25,7 @@ public final class PersistenceController {
         }
     }
 
-    func saveContext() {
+    func save() {
         let context = container.viewContext
         if context.hasChanges {
             do {
