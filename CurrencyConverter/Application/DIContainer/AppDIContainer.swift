@@ -1,9 +1,8 @@
-import Foundation
-
 final class AppDIContainer {
+    static let persistenceController = PersistenceController.shared
     static let baseURL = AppConstant.baseURL
 
-    var dataSourceDIContainer = DataSourceDIContainer(baseURL: baseURL)
+    var dataSourceDIContainer = DataSourceDIContainer(persistenceController: persistenceController, baseURL: baseURL)
     lazy var repositoryDIContainer = RepositoryDIContainer(dataSourceDIContainer: dataSourceDIContainer)
     lazy var useCaseDIContainer = UseCaseDIContainer(repositoryDIContainer: repositoryDIContainer)
 
@@ -11,7 +10,12 @@ final class AppDIContainer {
 
     /// CurrencyInfoViewModel 생성
     func makeCurrencyInfoViewModel() -> CurrencyInfoViewModel {
-        CurrencyInfoViewModel(fetchCurrencyUseCase: useCaseDIContainer.makeFetchCurrencyUseCase())
+        CurrencyInfoViewModel(
+            fetchCurrencyUseCase: useCaseDIContainer.makeFetchCurrencyUseCase(),
+            fetchLatestCurrencyUseCase: useCaseDIContainer.makeFetchLatestCurrencyUseCase(),
+            fetchFavoriteUseCase: useCaseDIContainer.makeFetchFavoriteUseCase(),
+            saveFavoriteUseCase: useCaseDIContainer.makeSaveFavoriteUseCase()
+        )
     }
 
     /// CurrencyConverterViewModel 생성

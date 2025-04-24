@@ -14,6 +14,8 @@ enum CurrencyInfoConstant {
         static let rateLabelWidth = 120
         static let defaultFontSize: CGFloat = 16
         static let nameFontSize: CGFloat = 14
+        static let starFill = "star.fill"
+        static let star = "star"
     }
 
     enum Alert {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="24D81" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CurrencyEntity" representedClassName="CurrencyEntity" syncable="YES">
+        <attribute name="code" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="rate" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="meta" maxCount="1" deletionRule="Nullify" destinationEntity="CurrencyMetaEntity" inverseName="currencies" inverseEntity="CurrencyMetaEntity"/>
+    </entity>
+    <entity name="CurrencyMetaEntity" representedClassName="CurrencyMetaEntity" syncable="YES">
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="currencies" toMany="YES" deletionRule="Cascade" destinationEntity="CurrencyEntity" inverseName="meta" inverseEntity="CurrencyEntity"/>
+    </entity>
+    <entity name="FavoriteEntity" representedClassName="FavoriteEntity" syncable="YES">
+        <attribute name="code" attributeType="String"/>
+        <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+    </entity>
+</model>

@@ -1,15 +1,24 @@
 final class CurrencyInfoViewModel: ViewModelProtocol {
     private let fetchCurrencyUseCase: FetchCurrencyUseCase
+    private let fetchLatestCurrencyUseCase: FetchLatestCurrencyUseCase
+    private let fetchFavoriteUseCase: FetchFavoriteUseCase
+    private let saveFavoriteUseCase: SaveFavoriteUseCase
+
     private let mapper = CurrencyDisplayMapper()
 
-    private(set) var meta: CurrencyMeta?
-    private(set) var currencies: [CurrencyDisplay] = []
-
     var action: ((Action) -> Void)?
-    private(set) var state = State(filteredCurrencies: [])
+    private(set) var state = State(currencies: [], filteredCurrencies: [])
 
-    init(fetchCurrencyUseCase: FetchCurrencyUseCase) {
+    init(
+        fetchCurrencyUseCase: FetchCurrencyUseCase,
+        fetchLatestCurrencyUseCase: FetchLatestCurrencyUseCase,
+        fetchFavoriteUseCase: FetchFavoriteUseCase,
+        saveFavoriteUseCase: SaveFavoriteUseCase
+    ) {
         self.fetchCurrencyUseCase = fetchCurrencyUseCase
+        self.fetchLatestCurrencyUseCase = fetchLatestCurrencyUseCase
+        self.fetchFavoriteUseCase = fetchFavoriteUseCase
+        self.saveFavoriteUseCase = saveFavoriteUseCase
     }
 
     /// 환율 데이터를 요청하고, 정렬 및 필터링을 적용한 후 업데이트 콜백을 호출하는 메서드
@@ -18,17 +27,15 @@ final class CurrencyInfoViewModel: ViewModelProtocol {
             guard let self else { return }
 
             switch result {
-            case let .success((meta, entities)):
-                self.meta = meta
+            case let .success(entities):
+                fetchLatestCurrencies()
+                let favoriates = self.fetchFavorites()
 
-                let currencies = entities
-                    .map { self.mapper.map(from: $0) }
-                    .sorted { $0.code < $1.code }
+                let currencies = entities.map { self.mapper.map(from: $0, favoriates?[$0.code]) }
+                self.state.currencies = self.sorted(currencies)
+                self.state.filteredCurrencies = self.state.currencies
 
-                self.currencies = currencies
-                self.state.filteredCurrencies = currencies
-
-                self.action?(.didUpdate)
+                self.action?(.didFetch)
             case let .failure(error):
                 self.action?(.didFail(error))
             }
@@ -40,13 +47,55 @@ final class CurrencyInfoViewModel: ViewModelProtocol {
     /// - Parameter keyword: 필터링에 사용할 검색어
     func filterCurrencies(with keyword: String) {
         if keyword.isEmpty {
-            state.filteredCurrencies = currencies
+            state.filteredCurrencies = state.currencies
         } else {
-            state.filteredCurrencies = currencies.filter {
+            state.filteredCurrencies = state.currencies.filter {
                 $0.code.contains(keyword.uppercased()) || $0.name.contains(keyword)
             }
         }
 
+        action?(.didFetch)
+    }
+
+    /// 선택된 환율의 즐겨찾기 상태를 토글하는 메서드
+    ///
+    /// - Parameter index: 즐겨찾기 상태를 토글할 `filteredCurrencies`의 인덱스.
+    func toggleFavorite(at index: Int) {
+        let code = state.filteredCurrencies[index].code
+
+        state.filteredCurrencies[index].isFavorite.toggle()
+
+        if let index = state.currencies.firstIndex(where: { $0.code == code }) {
+            state.currencies[index].isFavorite.toggle()
+        }
+
+        state.filteredCurrencies = sorted(state.filteredCurrencies)
+        state.currencies = sorted(state.currencies)
+
+        saveFavoriteUseCase.saveFavorite(by: code)
+
         action?(.didUpdate)
+    }
+
+    private func fetchLatestCurrencies() {
+        if let entities = fetchLatestCurrencyUseCase.fetchLatestCurrencies() {
+            state.latestCurrencies = entities.map { self.mapper.map(from: $0, false) }
+        }
+    }
+
+    private func fetchFavorites() -> [String: Bool]? {
+        fetchFavoriteUseCase.fetchFavorites()
+    }
+
+    /// 즐겨찾기 상태를 기준으로 환율을 정렬하는 메서드
+    ///
+    /// 즐겨찾기 기준으로 정렬 후 통화 코드 기준으로 정렬.
+    ///
+    /// - Parameter currencies: 정렬할 `CurrencyDisplay` 배열
+    /// - Returns: 정렬된 통화 배열
+    private func sorted(_ currencies: [CurrencyDisplay]) -> [CurrencyDisplay] {
+        return currencies.sorted {
+            ($0.isFavorite ? 0 : 1, $0.code) < ($1.isFavorite ? 0 : 1, $1.code)
+        }
     }
 }

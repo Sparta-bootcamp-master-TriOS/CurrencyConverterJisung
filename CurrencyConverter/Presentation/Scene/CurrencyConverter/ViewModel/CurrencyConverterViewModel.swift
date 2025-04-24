@@ -1,14 +1,12 @@
 final class CurrencyConverterViewModel {
     private let convertCurrencyUseCase: ConvertCurrencyUseCase
 
-    private(set) var currency: CurrencyDisplay
-
     var action: ((Action) -> Void)?
-    private(set) var state = State()
+    private(set) var state: State
 
     init(convertCurrencyUseCase: ConvertCurrencyUseCase, currency: CurrencyDisplay) {
         self.convertCurrencyUseCase = convertCurrencyUseCase
-        self.currency = currency
+        state = State(currency: currency)
     }
 
     func convertCurrency(amountText: String) {
@@ -24,13 +22,13 @@ final class CurrencyConverterViewModel {
             return
         }
 
-        guard let result = convertCurrencyUseCase.convert(code: currency.code, amount: amount) else {
+        guard let result = convertCurrencyUseCase.convert(code: state.currency.code, amount: amount) else {
             return
         }
 
         let resultText = String(format: CurrencyConverterConstant.Label.resultFormat, result)
 
-        state = State(result: resultText)
+        state.result = resultText
 
         action?(.didUpdate)
     }

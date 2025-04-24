@@ -1,6 +1,7 @@
 extension CurrencyInfoViewModel {
     enum Action {
-        case didUpdate
+        case didFetch
         case didFail(Error)
+        case didUpdate
     }
 }
