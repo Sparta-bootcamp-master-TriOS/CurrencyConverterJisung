@@ -1,4 +1,5 @@
 final class AppDIContainer {
+    /// Mock 데이터는 `PersistenceController.makeInMemory()`를 사용
     static let persistenceController = PersistenceController.shared
     static let baseURL = AppConstant.baseURL
 
