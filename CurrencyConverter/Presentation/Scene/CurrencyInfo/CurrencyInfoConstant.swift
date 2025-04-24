@@ -2,13 +2,18 @@ import Foundation
 
 enum CurrencyInfoConstant {
     enum Separator {
-        static let edgesInset: CGFloat = 0
+        static let horizontalInset: CGFloat = 16
+        static let verticalInset: CGFloat = 0
     }
 
     enum TableView {
-        static let horizontalInset: CGFloat = 20
+        static let defaultSpacing: CGFloat = 16
+        static let labelStackViewSpacing: CGFloat = 4
         static let rateFormat = "%.4f"
-        static let height: CGFloat = 40
+        static let height: CGFloat = 60
+        static let rateLabelWidth = 120
+        static let defaultFontSize: CGFloat = 16
+        static let nameFontSize: CGFloat = 14
     }
 
     enum Alert {

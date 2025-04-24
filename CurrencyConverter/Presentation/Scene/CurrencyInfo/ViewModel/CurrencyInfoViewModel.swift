@@ -6,6 +6,7 @@ final class CurrencyInfoViewModel {
 
     private(set) var meta: CurrencyMeta?
     private(set) var currencies: [Currency] = []
+    private(set) var filteredCurrencies: [Currency] = []
 
     init(fetchCurrencyUseCase: FetchCurrencyUseCase) {
         self.fetchCurrencyUseCase = fetchCurrencyUseCase
@@ -16,12 +17,27 @@ final class CurrencyInfoViewModel {
             switch result {
             case let .success((meta, currencies)):
                 self?.meta = meta
-                self?.currencies = currencies
+
+                let sorted = currencies.sorted { $0.code < $1.code }
+                self?.currencies = sorted
+                self?.filteredCurrencies = sorted
 
                 self?.onUpdate?()
             case let .failure(error):
                 self?.onError?(error)
             }
         }
+    }
+
+    func filterCurrencies(with keyword: String) {
+        if keyword.isEmpty {
+            filteredCurrencies = currencies
+        } else {
+            filteredCurrencies = currencies.filter {
+                $0.code.contains(keyword.uppercased()) || $0.name.contains(keyword)
+            }
+        }
+
+        onUpdate?()
     }
 }
