@@ -13,13 +13,20 @@ final class AppDIContainer {
         CurrencyInfoViewModel(fetchCurrencyUseCase: useCaseDIContainer.makeFetchCurrencyUseCase())
     }
 
+    func makeCurrencyConverterViewModel(with currency: Currency) -> CurrencyConverterViewModel {
+        CurrencyConverterViewModel(
+            convertCurrencyUseCase: useCaseDIContainer.makeConvertCurrencyUseCase(),
+            currency: currency
+        )
+    }
+
     // MARK: - ViewController
 
     func makeCurrencyInfoViewController() -> CurrencyInfoViewController {
         CurrencyInfoViewController(currencyInfoViewModel: makeCurrencyInfoViewModel())
     }
 
-    func makeCurrencyConverterViewController(code: String, name: String) -> CurrencyConverterViewController {
-        CurrencyConverterViewController(code: code, name: name)
+    func makeCurrencyConverterViewController(with currency: Currency) -> CurrencyConverterViewController {
+        CurrencyConverterViewController(currencyConverterViewModel: makeCurrencyConverterViewModel(with: currency))
     }
 }
