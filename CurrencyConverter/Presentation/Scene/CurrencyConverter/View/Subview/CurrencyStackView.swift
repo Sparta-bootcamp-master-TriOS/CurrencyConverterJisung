@@ -38,7 +38,7 @@ final class CurrencyStackView: UIView {
         }
     }
 
-    func updateLabel(to currency: Currency) {
+    func updateLabel(to currency: CurrencyDisplay) {
         codeLabel.text = currency.code
         nameLabel.text = currency.name
     }

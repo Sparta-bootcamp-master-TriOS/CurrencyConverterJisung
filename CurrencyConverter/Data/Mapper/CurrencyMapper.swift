@@ -9,7 +9,7 @@ struct CurrencyMapper {
     ///
     /// - Parameter response: API로부터 받은 환율 응답 데이터
     /// - Returns: 변환된 `CurrencyMeta`와 `Currency` 배열의 튜플
-    func mapToCurrency(from response: CurrencyResponse) -> (CurrencyMeta, [Currency]) {
+    func map(from response: CurrencyResponse) -> (CurrencyMeta, [Currency]) {
         let meta = CurrencyMeta(
             result: response.result,
             provider: response.provider,

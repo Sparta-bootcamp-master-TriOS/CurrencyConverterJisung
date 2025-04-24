@@ -9,11 +9,13 @@ final class AppDIContainer {
 
     // MARK: - ViewModel
 
+    /// CurrencyInfoViewModel 생성
     func makeCurrencyInfoViewModel() -> CurrencyInfoViewModel {
         CurrencyInfoViewModel(fetchCurrencyUseCase: useCaseDIContainer.makeFetchCurrencyUseCase())
     }
 
-    func makeCurrencyConverterViewModel(with currency: Currency) -> CurrencyConverterViewModel {
+    /// CurrencyConverterViewModel 생성
+    func makeCurrencyConverterViewModel(with currency: CurrencyDisplay) -> CurrencyConverterViewModel {
         CurrencyConverterViewModel(
             convertCurrencyUseCase: useCaseDIContainer.makeConvertCurrencyUseCase(),
             currency: currency
@@ -22,11 +24,13 @@ final class AppDIContainer {
 
     // MARK: - ViewController
 
+    /// CurrencyInfoViewController 생성
     func makeCurrencyInfoViewController() -> CurrencyInfoViewController {
         CurrencyInfoViewController(currencyInfoViewModel: makeCurrencyInfoViewModel())
     }
 
-    func makeCurrencyConverterViewController(with currency: Currency) -> CurrencyConverterViewController {
+    /// CurrencyConverterViewController 생성
+    func makeCurrencyConverterViewController(with currency: CurrencyDisplay) -> CurrencyConverterViewController {
         CurrencyConverterViewController(currencyConverterViewModel: makeCurrencyConverterViewModel(with: currency))
     }
 }

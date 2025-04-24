@@ -2,7 +2,7 @@ import UIKit
 
 extension CurrencyInfoViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        currencyInfoViewModel.filteredCurrencies.count
+        currencyInfoViewModel.state.filteredCurrencies.count
     }
 
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -11,7 +11,7 @@ extension CurrencyInfoViewController: UITableViewDataSource {
         ) as? CurrencyInfoTableViewCell else {
             return UITableViewCell()
         }
-        cell.updateCell(by: currencyInfoViewModel.filteredCurrencies[indexPath.row])
+        cell.updateCell(by: currencyInfoViewModel.state.filteredCurrencies[indexPath.row])
 
         return cell
     }

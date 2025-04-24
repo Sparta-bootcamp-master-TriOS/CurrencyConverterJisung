@@ -9,6 +9,7 @@ final class AppCoordinator {
         self.appDIContainer = appDIContainer
     }
 
+    /// 앱 실행 시 진입 화면 설정 메서드
     func start() {
         let currencyInfoCoordinator = CurrencyInfoCoordinator(
             navigationController: navigationController,

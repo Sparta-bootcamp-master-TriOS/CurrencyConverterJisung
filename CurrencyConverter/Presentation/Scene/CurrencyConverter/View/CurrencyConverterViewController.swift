@@ -69,21 +69,31 @@ final class CurrencyConverterViewController: UIViewController {
 
     private func configureBindings() {
         convertButton.onButtonTapped = { [weak self] in
-            guard let self else { return }
+            guard let self, let inputText = amountTextField.text else { return }
 
-            guard let inputText = amountTextField.text, !inputText.isEmpty else {
-                showErrorAlert(message: Const.Alert.empty)
+            self.currencyConverterViewModel.convertCurrency(amountText: inputText)
+        }
 
-                return
+        currencyConverterViewModel.action = { [weak self] action in
+            switch action {
+            case .didUpdate:
+                let result = self?.currencyConverterViewModel.state.result
+                    ?? Const.Label.noConvertResult
+
+                self?.resultLabel.updateUI(result: result)
+            case let .didFail(error):
+                let message: String
+                switch error {
+                case CurrencyConverterViewModel.ConvertError.empty:
+                    message = Const.Alert.empty
+                case CurrencyConverterViewModel.ConvertError.noNumber:
+                    message = Const.Alert.noNumber
+                default:
+                    return
+                }
+
+                self?.showErrorAlert(message: message)
             }
-
-            guard let result = self.currencyConverterViewModel.convertCurrency(amountText: inputText) else {
-                showErrorAlert(message: Const.Alert.noNumber)
-
-                return
-            }
-
-            self.resultLabel.updateUI(result: result)
         }
     }
 

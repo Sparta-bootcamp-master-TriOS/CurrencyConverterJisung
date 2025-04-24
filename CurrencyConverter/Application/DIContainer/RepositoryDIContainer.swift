@@ -1,18 +1,16 @@
 final class RepositoryDIContainer {
     private let dataSourceDIContainer: DataSourceDIContainer
 
+    lazy var defaultCurrencyRepository: CurrencyRepository = DefaultCurrencyRepository(
+        currencyDataSource: dataSourceDIContainer.makeCurrencyDataSource()
+    )
+
     init(dataSourceDIContainer: DataSourceDIContainer) {
         self.dataSourceDIContainer = dataSourceDIContainer
     }
-
-    func makeCurrencyMapper() -> CurrencyMapper {
-        CurrencyMapper()
-    }
-
+    
+    /// CurrencyRepository 생성
     func makeCurrencyRepository() -> CurrencyRepository {
-        DefaultCurrencyRepository(
-            currencyDataSource: dataSourceDIContainer.makeCurrencyDataSource(),
-            currencyMapper: makeCurrencyMapper()
-        )
+        defaultCurrencyRepository
     }
 }

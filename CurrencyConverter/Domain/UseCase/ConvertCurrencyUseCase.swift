@@ -1,3 +1,3 @@
 protocol ConvertCurrencyUseCase {
-    func convert(amount: Double, rate: Double) -> Double
+    func convert(code: String, amount: Double) -> Double?
 }
