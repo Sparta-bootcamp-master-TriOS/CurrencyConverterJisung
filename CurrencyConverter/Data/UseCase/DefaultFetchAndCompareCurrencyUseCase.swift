@@ -30,8 +30,8 @@ public final class DefaultFetchAndCompareCurrencyUseCase: FetchAndCompareCurrenc
             case let .success(baseCurrencies):
                 let targets = Dictionary(uniqueKeysWithValues: targetCurrencies.map { ($0.code, $0) })
 
-                let currencies: [Currency] = baseCurrencies.compactMap { [weak self] base in
-                    guard let target = targets[base.code] else { return .none }
+                let currencies: [Currency] = baseCurrencies.map { base in
+                    guard let target = targets[base.code] else { return base }
 
                     let result = self?.compareCurrencyUseCase.execute(base: base.rate, target: target.rate)
 
