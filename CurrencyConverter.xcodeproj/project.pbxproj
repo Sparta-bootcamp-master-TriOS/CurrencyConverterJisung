@@ -7,29 +7,326 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF73A1252DAD003400F14576 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BF73A1242DAD003400F14576 /* Alamofire */; };
-		BF73A1282DAD004700F14576 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF73A1272DAD004700F14576 /* SnapKit */; };
+		BF14EBFD2DB64D94000A9333 /* DomainLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF14EBF72DB64D94000A9333 /* DomainLayer.framework */; };
+		BF14EBFE2DB64D94000A9333 /* DomainLayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF14EBF72DB64D94000A9333 /* DomainLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF14EC0F2DB64E24000A9333 /* DataLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF14EC092DB64E24000A9333 /* DataLayer.framework */; };
+		BF14EC102DB64E24000A9333 /* DataLayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF14EC092DB64E24000A9333 /* DataLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF14EC162DB64E33000A9333 /* DomainLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF14EBF72DB64D94000A9333 /* DomainLayer.framework */; };
+		BF14EC172DB64E33000A9333 /* DomainLayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF14EBF72DB64D94000A9333 /* DomainLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF14EC1C2DB64E39000A9333 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BF14EC1B2DB64E39000A9333 /* Alamofire */; };
+		BF14EC282DB64E4C000A9333 /* PresentationLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF14EC222DB64E4C000A9333 /* PresentationLayer.framework */; };
+		BF14EC292DB64E4C000A9333 /* PresentationLayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF14EC222DB64E4C000A9333 /* PresentationLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF14EC2E2DB64E5B000A9333 /* DomainLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF14EBF72DB64D94000A9333 /* DomainLayer.framework */; };
+		BF14EC2F2DB64E5B000A9333 /* DomainLayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF14EBF72DB64D94000A9333 /* DomainLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF14EC342DB64E5E000A9333 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF14EC332DB64E5E000A9333 /* SnapKit */; };
+		BF928FEB2DB76913008DDB3C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BF73A1242DAD003400F14576 /* Alamofire */; };
+		BF928FEC2DB76913008DDB3C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF73A1272DAD004700F14576 /* SnapKit */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BF14EBFB2DB64D94000A9333 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF73A1002DACFEBA00F14576 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF14EBF62DB64D94000A9333;
+			remoteInfo = Domain;
+		};
+		BF14EC0D2DB64E24000A9333 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF73A1002DACFEBA00F14576 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF14EC082DB64E24000A9333;
+			remoteInfo = Data;
+		};
+		BF14EC182DB64E33000A9333 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF73A1002DACFEBA00F14576 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF14EBF62DB64D94000A9333;
+			remoteInfo = Domain;
+		};
+		BF14EC262DB64E4C000A9333 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF73A1002DACFEBA00F14576 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF14EC212DB64E4C000A9333;
+			remoteInfo = Presentation;
+		};
+		BF14EC302DB64E5B000A9333 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF73A1002DACFEBA00F14576 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF14EBF62DB64D94000A9333;
+			remoteInfo = Domain;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF14EC032DB64D94000A9333 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF14EC102DB64E24000A9333 /* DataLayer.framework in Embed Frameworks */,
+				BF14EBFE2DB64D94000A9333 /* DomainLayer.framework in Embed Frameworks */,
+				BF14EC292DB64E4C000A9333 /* PresentationLayer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF14EC1A2DB64E34000A9333 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF14EC172DB64E33000A9333 /* DomainLayer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF14EC322DB64E5B000A9333 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF14EC2F2DB64E5B000A9333 /* DomainLayer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BF14EBF72DB64D94000A9333 /* DomainLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DomainLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF14EC092DB64E24000A9333 /* DataLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF14EC222DB64E4C000A9333 /* PresentationLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PresentationLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF73A1082DACFEBA00F14576 /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BF14EC362DB64EB7000A9333 /* Exceptions for "CurrencyConverter" folder in "DomainLayer" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Domain/Entity/Currency.swift,
+				Domain/Entity/CurrencyMeta.swift,
+				Domain/Entity/Favorite.swift,
+				Domain/Entity/LastSeenScene.swift,
+				Domain/Entity/LastSeenSceneInfo.swift,
+				"Domain/Repository/CurrencyCacheRepository .swift",
+				Domain/Repository/CurrencyRepository.swift,
+				Domain/Repository/FavoriteRepository.swift,
+				Domain/Repository/LastSeenSceneRepository.swift,
+				Domain/Repository/LatestCurrencyRepository.swift,
+				Domain/UseCase/CompareCurrencyUseCase.swift,
+				Domain/UseCase/ConvertCurrencyUseCase.swift,
+				Domain/UseCase/FetchAndCompareCurrencyUseCase.swift,
+				Domain/UseCase/FetchCurrencyUseCase.swift,
+				Domain/UseCase/FetchFavoriteUseCase.swift,
+				Domain/UseCase/FetchLastSeenSceneUseCase.swift,
+				Domain/UseCase/FetchLatestCurrencyUseCase.swift,
+				Domain/UseCase/SaveFavoriteUseCase.swift,
+				Domain/UseCase/SaveLastSeenSceneUseCase.swift,
+			);
+			target = BF14EBF62DB64D94000A9333 /* DomainLayer */;
+		};
+		BF14EC442DB64F71000A9333 /* Exceptions for "CurrencyConverter" folder in "DataLayer" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Data/Mapper/CurrencyMapper.swift,
+				Data/Mapper/MapperConstant.swift,
+				"Data/Model/CoreData/CurrencyEntity+CoreDataClass.swift",
+				"Data/Model/CoreData/CurrencyEntity+CoreDataProperties.swift",
+				"Data/Model/CoreData/CurrencyMetaEntity+CoreDataClass.swift",
+				"Data/Model/CoreData/CurrencyMetaEntity+CoreDataProperties.swift",
+				"Data/Model/CoreData/FavoriteEntity+CoreDataClass.swift",
+				"Data/Model/CoreData/FavoriteEntity+CoreDataProperties.swift",
+				"Data/Model/CoreData/LastSeenSceneInfoEntity+CoreDataClass.swift",
+				"Data/Model/CoreData/LastSeenSceneInfoEntity+CoreDataProperties.swift",
+				Data/Model/CurrencyEntityResponse.swift,
+				Data/Model/CurrencyResponse.swift,
+				Data/Repository/DefaultCurrencyCacheRepository.swift,
+				Data/Repository/DefaultCurrencyRepository.swift,
+				Data/Repository/DefaultFavoriteRepository.swift,
+				Data/Repository/DefaultLastSeenSceneRepository.swift,
+				Data/Repository/DefaultLatestCurrencyRepository.swift,
+				Data/Source/Local/FetchFavoriteDataSource.swift,
+				Data/Source/Local/FetchLastSeenSceneDataSource.swift,
+				Data/Source/Local/FetchLatestCurrencyDataSource.swift,
+				Data/Source/Local/PersistenceController.swift,
+				"Data/Source/Local/PersistenceController+Mock.swift",
+				Data/Source/Local/SaveCurrencyDataSource.swift,
+				Data/Source/Local/SaveFavoriteDataSource.swift,
+				Data/Source/Local/SaveLastSeenSceneDataSource.swift,
+				Data/Source/Remote/FetchCurrencyDataSource.swift,
+				Data/Source/SourceConstant.swift,
+				Data/UseCase/DefaultCompareCurrencyUseCase.swift,
+				Data/UseCase/DefaultConvertCurrencyUseCase.swift,
+				Data/UseCase/DefaultFetchAndCompareCurrencyUseCase.swift,
+				Data/UseCase/DefaultFetchCurrencyUseCase.swift,
+				Data/UseCase/DefaultFetchFavoriteUseCase.swift,
+				Data/UseCase/DefaultFetchLastSeenSceneUseCase.swift,
+				Data/UseCase/DefaultFetchLatestCurrencyUseCase.swift,
+				Data/UseCase/DefaultSaveFavoriteUseCase.swift,
+				Data/UseCase/DefaultSaveLastSeenSceneUseCase.swift,
+			);
+			target = BF14EC082DB64E24000A9333 /* DataLayer */;
+		};
+		BF14EC652DB65015000A9333 /* Exceptions for "CurrencyConverter" folder in "PresentationLayer" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Presentation/Mapper/CurrencyDisplayMapper.swift,
+				Presentation/Model/CurrencyDisplay.swift,
+				Presentation/Scene/CurrencyConverter/CurrencyConverterConstant.swift,
+				Presentation/Scene/CurrencyConverter/View/CurrencyConverterViewController.swift,
+				Presentation/Scene/CurrencyConverter/View/Subview/AmountTextField.swift,
+				Presentation/Scene/CurrencyConverter/View/Subview/ConvertButton.swift,
+				Presentation/Scene/CurrencyConverter/View/Subview/CurrencyStackView.swift,
+				Presentation/Scene/CurrencyConverter/View/Subview/ResultLabel.swift,
+				Presentation/Scene/CurrencyConverter/ViewModel/CurrencyConverterViewModel.swift,
+				"Presentation/Scene/CurrencyConverter/ViewModel/CurrencyConverterViewModel+Action.swift",
+				"Presentation/Scene/CurrencyConverter/ViewModel/CurrencyConverterViewModel+ConvertError.swift",
+				"Presentation/Scene/CurrencyConverter/ViewModel/CurrencyConverterViewModel+State.swift",
+				Presentation/Scene/CurrencyInfo/CurrencyInfoConstant.swift,
+				Presentation/Scene/CurrencyInfo/View/CurrencyInfoViewController.swift,
+				"Presentation/Scene/CurrencyInfo/View/CurrencyInfoViewController+UISearchBarDelegate.swift",
+				"Presentation/Scene/CurrencyInfo/View/CurrencyInfoViewController+UITableViewDataSource.swift",
+				"Presentation/Scene/CurrencyInfo/View/CurrencyInfoViewController+UITableViewDelegate.swift",
+				Presentation/Scene/CurrencyInfo/View/CurrencyInfoViewControllerDelegate.swift,
+				Presentation/Scene/CurrencyInfo/View/Subview/CurrencyInfoTableViewCell.swift,
+				Presentation/Scene/CurrencyInfo/View/Subview/CurrencyInfoView.swift,
+				Presentation/Scene/CurrencyInfo/View/Subview/CurrencySearchBar.swift,
+				Presentation/Scene/CurrencyInfo/View/Subview/NoFilteredCurrenciesLabel.swift,
+				Presentation/Scene/CurrencyInfo/ViewModel/CurrencyInfoViewModel.swift,
+				"Presentation/Scene/CurrencyInfo/ViewModel/CurrencyInfoViewModel+Action.swift",
+				"Presentation/Scene/CurrencyInfo/ViewModel/CurrencyInfoViewModel+State.swift",
+				Presentation/Shared/Alert/AlertConstant.swift,
+				Presentation/Shared/Alert/AlertManager.swift,
+				Presentation/Shared/SubView/TitleLabel.swift,
+				Presentation/Shared/Util/ReuseIdentifier.swift,
+				Presentation/Shared/ViewModel/ViewModelProtocol.swift,
+				Resource/Assets.xcassets,
+			);
+			target = BF14EC212DB64E4C000A9333 /* PresentationLayer */;
+		};
 		BF73A11D2DACFEBB00F14576 /* Exceptions for "CurrencyConverter" folder in "CurrencyConverter" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"/Localized: Resource/LaunchScreen.storyboard",
+				Data/Mapper/CurrencyMapper.swift,
+				Data/Mapper/MapperConstant.swift,
+				Data/Model/CoreData/CurrencyConverter.xcdatamodeld,
+				"Data/Model/CoreData/CurrencyEntity+CoreDataClass.swift",
+				"Data/Model/CoreData/CurrencyEntity+CoreDataProperties.swift",
+				"Data/Model/CoreData/CurrencyMetaEntity+CoreDataClass.swift",
+				"Data/Model/CoreData/CurrencyMetaEntity+CoreDataProperties.swift",
+				"Data/Model/CoreData/FavoriteEntity+CoreDataClass.swift",
+				"Data/Model/CoreData/FavoriteEntity+CoreDataProperties.swift",
+				"Data/Model/CoreData/LastSeenSceneInfoEntity+CoreDataClass.swift",
+				"Data/Model/CoreData/LastSeenSceneInfoEntity+CoreDataProperties.swift",
+				Data/Model/CurrencyEntityResponse.swift,
+				Data/Model/CurrencyResponse.swift,
+				Data/Repository/DefaultCurrencyCacheRepository.swift,
+				Data/Repository/DefaultCurrencyRepository.swift,
+				Data/Repository/DefaultFavoriteRepository.swift,
+				Data/Repository/DefaultLastSeenSceneRepository.swift,
+				Data/Repository/DefaultLatestCurrencyRepository.swift,
+				Data/Source/Local/FetchFavoriteDataSource.swift,
+				Data/Source/Local/FetchLastSeenSceneDataSource.swift,
+				Data/Source/Local/FetchLatestCurrencyDataSource.swift,
+				Data/Source/Local/PersistenceController.swift,
+				"Data/Source/Local/PersistenceController+Mock.swift",
+				Data/Source/Local/SaveCurrencyDataSource.swift,
+				Data/Source/Local/SaveFavoriteDataSource.swift,
+				Data/Source/Local/SaveLastSeenSceneDataSource.swift,
+				Data/Source/Remote/FetchCurrencyDataSource.swift,
+				Data/Source/SourceConstant.swift,
+				Data/UseCase/DefaultCompareCurrencyUseCase.swift,
+				Data/UseCase/DefaultConvertCurrencyUseCase.swift,
+				Data/UseCase/DefaultFetchAndCompareCurrencyUseCase.swift,
+				Data/UseCase/DefaultFetchCurrencyUseCase.swift,
+				Data/UseCase/DefaultFetchFavoriteUseCase.swift,
+				Data/UseCase/DefaultFetchLastSeenSceneUseCase.swift,
+				Data/UseCase/DefaultFetchLatestCurrencyUseCase.swift,
+				Data/UseCase/DefaultSaveFavoriteUseCase.swift,
+				Data/UseCase/DefaultSaveLastSeenSceneUseCase.swift,
+				Domain/Entity/Currency.swift,
+				Domain/Entity/CurrencyMeta.swift,
+				Domain/Entity/Favorite.swift,
+				Domain/Entity/LastSeenScene.swift,
+				Domain/Entity/LastSeenSceneInfo.swift,
+				"Domain/Repository/CurrencyCacheRepository .swift",
+				Domain/Repository/CurrencyRepository.swift,
+				Domain/Repository/FavoriteRepository.swift,
+				Domain/Repository/LastSeenSceneRepository.swift,
+				Domain/Repository/LatestCurrencyRepository.swift,
+				Domain/UseCase/CompareCurrencyUseCase.swift,
+				Domain/UseCase/ConvertCurrencyUseCase.swift,
+				Domain/UseCase/FetchAndCompareCurrencyUseCase.swift,
+				Domain/UseCase/FetchCurrencyUseCase.swift,
+				Domain/UseCase/FetchFavoriteUseCase.swift,
+				Domain/UseCase/FetchLastSeenSceneUseCase.swift,
+				Domain/UseCase/FetchLatestCurrencyUseCase.swift,
+				Domain/UseCase/SaveFavoriteUseCase.swift,
+				Domain/UseCase/SaveLastSeenSceneUseCase.swift,
+				Presentation/Mapper/CurrencyDisplayMapper.swift,
+				Presentation/Model/CurrencyDisplay.swift,
+				Presentation/Scene/CurrencyConverter/CurrencyConverterConstant.swift,
+				Presentation/Scene/CurrencyConverter/View/CurrencyConverterViewController.swift,
+				Presentation/Scene/CurrencyConverter/View/Subview/AmountTextField.swift,
+				Presentation/Scene/CurrencyConverter/View/Subview/ConvertButton.swift,
+				Presentation/Scene/CurrencyConverter/View/Subview/CurrencyStackView.swift,
+				Presentation/Scene/CurrencyConverter/View/Subview/ResultLabel.swift,
+				Presentation/Scene/CurrencyConverter/ViewModel/CurrencyConverterViewModel.swift,
+				"Presentation/Scene/CurrencyConverter/ViewModel/CurrencyConverterViewModel+Action.swift",
+				"Presentation/Scene/CurrencyConverter/ViewModel/CurrencyConverterViewModel+ConvertError.swift",
+				"Presentation/Scene/CurrencyConverter/ViewModel/CurrencyConverterViewModel+State.swift",
+				Presentation/Scene/CurrencyInfo/CurrencyInfoConstant.swift,
+				Presentation/Scene/CurrencyInfo/View/CurrencyInfoViewController.swift,
+				"Presentation/Scene/CurrencyInfo/View/CurrencyInfoViewController+UISearchBarDelegate.swift",
+				"Presentation/Scene/CurrencyInfo/View/CurrencyInfoViewController+UITableViewDataSource.swift",
+				"Presentation/Scene/CurrencyInfo/View/CurrencyInfoViewController+UITableViewDelegate.swift",
+				Presentation/Scene/CurrencyInfo/View/CurrencyInfoViewControllerDelegate.swift,
+				Presentation/Scene/CurrencyInfo/View/Subview/CurrencyInfoTableViewCell.swift,
+				Presentation/Scene/CurrencyInfo/View/Subview/CurrencyInfoView.swift,
+				Presentation/Scene/CurrencyInfo/View/Subview/CurrencySearchBar.swift,
+				Presentation/Scene/CurrencyInfo/View/Subview/NoFilteredCurrenciesLabel.swift,
+				Presentation/Scene/CurrencyInfo/ViewModel/CurrencyInfoViewModel.swift,
+				"Presentation/Scene/CurrencyInfo/ViewModel/CurrencyInfoViewModel+Action.swift",
+				"Presentation/Scene/CurrencyInfo/ViewModel/CurrencyInfoViewModel+State.swift",
+				Presentation/Shared/Alert/AlertConstant.swift,
+				Presentation/Shared/Alert/AlertManager.swift,
+				Presentation/Shared/SubView/TitleLabel.swift,
+				Presentation/Shared/Util/ReuseIdentifier.swift,
+				Presentation/Shared/ViewModel/ViewModelProtocol.swift,
+				Resource/Assets.xcassets,
 				Resource/Info.plist,
 			);
 			target = BF73A1072DACFEBA00F14576 /* CurrencyConverter */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		BFB460B82DB664A0000C85F0 /* Exceptions for "CurrencyConverter" folder in "Copy Bundle Resources" phase from "CurrencyConverter" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = BF73A1062DACFEBA00F14576 /* Resources */;
+			membershipExceptions = (
+				Data/Model/CoreData/CurrencyConverter.xcdatamodeld,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BF73A10A2DACFEBA00F14576 /* CurrencyConverter */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				BF73A11D2DACFEBB00F14576 /* Exceptions for "CurrencyConverter" folder in "CurrencyConverter" target */,
+				BFB460B82DB664A0000C85F0 /* Exceptions for "CurrencyConverter" folder in "Copy Bundle Resources" phase from "CurrencyConverter" target */,
+				BF14EC362DB64EB7000A9333 /* Exceptions for "CurrencyConverter" folder in "DomainLayer" target */,
+				BF14EC442DB64F71000A9333 /* Exceptions for "CurrencyConverter" folder in "DataLayer" target */,
+				BF14EC652DB65015000A9333 /* Exceptions for "CurrencyConverter" folder in "PresentationLayer" target */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -37,12 +334,40 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BF14EBF42DB64D94000A9333 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF14EC062DB64E24000A9333 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF14EC162DB64E33000A9333 /* DomainLayer.framework in Frameworks */,
+				BF14EC1C2DB64E39000A9333 /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF14EC1F2DB64E4C000A9333 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF14EC2E2DB64E5B000A9333 /* DomainLayer.framework in Frameworks */,
+				BF14EC342DB64E5E000A9333 /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF73A1052DACFEBA00F14576 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF73A1252DAD003400F14576 /* Alamofire in Frameworks */,
-				BF73A1282DAD004700F14576 /* SnapKit in Frameworks */,
+				BF928FEC2DB76913008DDB3C /* SnapKit in Frameworks */,
+				BF928FEB2DB76913008DDB3C /* Alamofire in Frameworks */,
+				BF14EC0F2DB64E24000A9333 /* DataLayer.framework in Frameworks */,
+				BF14EBFD2DB64D94000A9333 /* DomainLayer.framework in Frameworks */,
+				BF14EC282DB64E4C000A9333 /* PresentationLayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,13 +386,106 @@
 			isa = PBXGroup;
 			children = (
 				BF73A1082DACFEBA00F14576 /* CurrencyConverter.app */,
+				BF14EBF72DB64D94000A9333 /* DomainLayer.framework */,
+				BF14EC092DB64E24000A9333 /* DataLayer.framework */,
+				BF14EC222DB64E4C000A9333 /* PresentationLayer.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		BF14EBF22DB64D94000A9333 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF14EC042DB64E24000A9333 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF14EC1D2DB64E4C000A9333 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		BF14EBF62DB64D94000A9333 /* DomainLayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF14EBFF2DB64D94000A9333 /* Build configuration list for PBXNativeTarget "DomainLayer" */;
+			buildPhases = (
+				BF14EBF22DB64D94000A9333 /* Headers */,
+				BF14EBF32DB64D94000A9333 /* Sources */,
+				BF14EBF42DB64D94000A9333 /* Frameworks */,
+				BF14EBF52DB64D94000A9333 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DomainLayer;
+			packageProductDependencies = (
+			);
+			productName = Domain;
+			productReference = BF14EBF72DB64D94000A9333 /* DomainLayer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BF14EC082DB64E24000A9333 /* DataLayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF14EC112DB64E24000A9333 /* Build configuration list for PBXNativeTarget "DataLayer" */;
+			buildPhases = (
+				BF14EC042DB64E24000A9333 /* Headers */,
+				BF14EC052DB64E24000A9333 /* Sources */,
+				BF14EC062DB64E24000A9333 /* Frameworks */,
+				BF14EC072DB64E24000A9333 /* Resources */,
+				BF14EC1A2DB64E34000A9333 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF14EC192DB64E33000A9333 /* PBXTargetDependency */,
+			);
+			name = DataLayer;
+			packageProductDependencies = (
+				BF14EC1B2DB64E39000A9333 /* Alamofire */,
+			);
+			productName = Data;
+			productReference = BF14EC092DB64E24000A9333 /* DataLayer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BF14EC212DB64E4C000A9333 /* PresentationLayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF14EC2A2DB64E4C000A9333 /* Build configuration list for PBXNativeTarget "PresentationLayer" */;
+			buildPhases = (
+				BF14EC1D2DB64E4C000A9333 /* Headers */,
+				BF14EC1E2DB64E4C000A9333 /* Sources */,
+				BF14EC1F2DB64E4C000A9333 /* Frameworks */,
+				BF14EC202DB64E4C000A9333 /* Resources */,
+				BF14EC322DB64E5B000A9333 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF14EC312DB64E5B000A9333 /* PBXTargetDependency */,
+			);
+			name = PresentationLayer;
+			packageProductDependencies = (
+				BF14EC332DB64E5E000A9333 /* SnapKit */,
+			);
+			productName = Presentation;
+			productReference = BF14EC222DB64E4C000A9333 /* PresentationLayer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		BF73A1072DACFEBA00F14576 /* CurrencyConverter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF73A11E2DACFEBB00F14576 /* Build configuration list for PBXNativeTarget "CurrencyConverter" */;
@@ -77,10 +495,14 @@
 				BF73A1042DACFEBA00F14576 /* Sources */,
 				BF73A1052DACFEBA00F14576 /* Frameworks */,
 				BF73A1062DACFEBA00F14576 /* Resources */,
+				BF14EC032DB64D94000A9333 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BF14EBFC2DB64D94000A9333 /* PBXTargetDependency */,
+				BF14EC0E2DB64E24000A9333 /* PBXTargetDependency */,
+				BF14EC272DB64E4C000A9333 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				BF73A10A2DACFEBA00F14576 /* CurrencyConverter */,
@@ -104,6 +526,15 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					BF14EBF62DB64D94000A9333 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					BF14EC082DB64E24000A9333 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					BF14EC212DB64E4C000A9333 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					BF73A1072DACFEBA00F14576 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -128,11 +559,35 @@
 			projectRoot = "";
 			targets = (
 				BF73A1072DACFEBA00F14576 /* CurrencyConverter */,
+				BF14EBF62DB64D94000A9333 /* DomainLayer */,
+				BF14EC082DB64E24000A9333 /* DataLayer */,
+				BF14EC212DB64E4C000A9333 /* PresentationLayer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BF14EBF52DB64D94000A9333 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF14EC072DB64E24000A9333 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF14EC202DB64E4C000A9333 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF73A1062DACFEBA00F14576 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -184,6 +639,27 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BF14EBF32DB64D94000A9333 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF14EC052DB64E24000A9333 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF14EC1E2DB64E4C000A9333 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF73A1042DACFEBA00F14576 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,7 +669,269 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		BF14EBFC2DB64D94000A9333 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF14EBF62DB64D94000A9333 /* DomainLayer */;
+			targetProxy = BF14EBFB2DB64D94000A9333 /* PBXContainerItemProxy */;
+		};
+		BF14EC0E2DB64E24000A9333 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF14EC082DB64E24000A9333 /* DataLayer */;
+			targetProxy = BF14EC0D2DB64E24000A9333 /* PBXContainerItemProxy */;
+		};
+		BF14EC192DB64E33000A9333 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF14EBF62DB64D94000A9333 /* DomainLayer */;
+			targetProxy = BF14EC182DB64E33000A9333 /* PBXContainerItemProxy */;
+		};
+		BF14EC272DB64E4C000A9333 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF14EC212DB64E4C000A9333 /* PresentationLayer */;
+			targetProxy = BF14EC262DB64E4C000A9333 /* PBXContainerItemProxy */;
+		};
+		BF14EC312DB64E5B000A9333 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF14EBF62DB64D94000A9333 /* DomainLayer */;
+			targetProxy = BF14EC302DB64E5B000A9333 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		BF14EC002DB64D94000A9333 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meowbutlerdev.Domain;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BF14EC012DB64D94000A9333 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meowbutlerdev.Domain;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BF14EC122DB64E24000A9333 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meowbutlerdev.Data;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BF14EC132DB64E24000A9333 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meowbutlerdev.Data;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BF14EC2B2DB64E4C000A9333 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meowbutlerdev.Presentation;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BF14EC2C2DB64E4C000A9333 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meowbutlerdev.Presentation;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		BF73A11F2DACFEBB00F14576 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -380,6 +1118,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BF14EBFF2DB64D94000A9333 /* Build configuration list for PBXNativeTarget "DomainLayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF14EC002DB64D94000A9333 /* Debug */,
+				BF14EC012DB64D94000A9333 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF14EC112DB64E24000A9333 /* Build configuration list for PBXNativeTarget "DataLayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF14EC122DB64E24000A9333 /* Debug */,
+				BF14EC132DB64E24000A9333 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF14EC2A2DB64E4C000A9333 /* Build configuration list for PBXNativeTarget "PresentationLayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF14EC2B2DB64E4C000A9333 /* Debug */,
+				BF14EC2C2DB64E4C000A9333 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BF73A1032DACFEBA00F14576 /* Build configuration list for PBXProject "CurrencyConverter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -420,6 +1185,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BF14EC1B2DB64E39000A9333 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF73A1232DAD003400F14576 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		BF14EC332DB64E5E000A9333 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF73A1262DAD004700F14576 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		BF73A1242DAD003400F14576 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BF73A1232DAD003400F14576 /* XCRemoteSwiftPackageReference "Alamofire" */;
