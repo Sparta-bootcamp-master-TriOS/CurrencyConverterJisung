@@ -7,6 +7,11 @@ struct SaveFavoriteDataSource {
         self.persistenceController = persistenceController
     }
 
+    /// 즐겨찾기 정보를 저장하는 메서드
+    ///
+    /// 해당 통화 코드가 이미 존재하면 `isFavorite` 상태를 토글하고, 존재하지 않으면 새로 생성한다.
+    ///
+    /// - Parameter code: 즐겨찾기 상태를 변경할 통화 코드
     func saveFavorite(by code: String) {
         let context = persistenceController.context
 

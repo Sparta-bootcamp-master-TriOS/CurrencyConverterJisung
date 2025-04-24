@@ -7,6 +7,13 @@ struct SaveCurrencyDataSource {
         self.persistenceController = persistenceController
     }
 
+    /// CoreData에 환율 엔티티들과 메타 정보를 저장하는 메서드
+    ///
+    /// 이미 동일한 `updatedAt` 값을 가진 메타 정보가 존재할 경우 저장하지 않는다.
+    ///
+    /// - Parameters:
+    ///   - currencies: 저장할 환율 정보 리스트 (`CurrencyEntityResponse`)
+    ///   - meta: 저장할 환율 메타 정보 (`CurrencyMeta`)
     func saveCurrencies(currencies: [CurrencyEntityResponse], meta: CurrencyMeta) {
         let context = persistenceController.context
 

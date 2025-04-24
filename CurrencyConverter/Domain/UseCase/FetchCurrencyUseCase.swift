@@ -1,3 +1,3 @@
 protocol FetchCurrencyUseCase {
-    func fetchCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void)
+    func execute(completion: @escaping (Result<[Currency], Error>) -> Void)
 }

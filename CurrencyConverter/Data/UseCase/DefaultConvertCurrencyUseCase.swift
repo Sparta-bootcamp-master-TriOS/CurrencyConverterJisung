@@ -11,7 +11,7 @@ struct DefaultConvertCurrencyUseCase: ConvertCurrencyUseCase {
     ///   - code: 환산 대상이 되는 통화 코드 (예: "USD").
     ///   - amount: 기준 금액.
     /// - Returns: 환율을 적용한 금액. 통화 코드가 유효하지 않으면 `nil` 반환.
-    func convert(code: String, amount: Double) -> Double? {
+    func execute(code: String, amount: Double) -> Double? {
         guard let currency = currencyRepository.currency(by: code) else {
             return .none
         }

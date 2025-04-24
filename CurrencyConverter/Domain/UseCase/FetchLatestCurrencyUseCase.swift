@@ -1,3 +1,3 @@
 protocol FetchLatestCurrencyUseCase {
-    func fetchLatestCurrencies() -> [Currency]?
+    func execute() -> [Currency]?
 }

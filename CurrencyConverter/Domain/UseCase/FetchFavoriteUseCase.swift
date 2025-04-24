@@ -1,3 +1,3 @@
 protocol FetchFavoriteUseCase {
-    func fetchFavorites() -> [String: Bool]?
+    func execute() -> [String: Bool]?
 }

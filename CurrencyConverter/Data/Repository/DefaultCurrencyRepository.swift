@@ -26,9 +26,9 @@ final class DefaultCurrencyRepository: CurrencyRepository {
         self.saveFavoriteDataSource = saveFavoriteDataSource
     }
 
-    /// 환율 데이터를 서버에서 가져오는 메서드
+    /// 서버에서 최신 환율 데이터를 가져오는 메서드
     ///
-    /// - Parameter completion: 요청 결과를 전달하는 클로저. 성공 시 `Currency` 배열을 반환
+    /// - Parameter completion: 결과를 반환하는 클로저. 성공 시 `[Currency]`를 반환하고 실패 시 `Error`를 반환한다.
     func fetchCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void) {
         fetchCurrencyDataSource.fetchCurrencies { [weak self] (result: Result<CurrencyResponse, Error>) in
             guard let self else { return }
@@ -48,14 +48,17 @@ final class DefaultCurrencyRepository: CurrencyRepository {
         }
     }
 
-    /// 특정 통화 코드에 해당하는 환율 정보를 반환하는 메서드
+    /// 메모리 캐시된 환율에서 특정 통화 코드에 해당하는 환율 데이터를 반환하는 메서드
     ///
-    /// - Parameter code: 검색할 통화 코드
-    /// - Returns: 해당 코드의 `Currency` 객체, 없으면 `nil`
+    /// - Parameter code: 통화 코드 (예: "USD", "KRW")
+    /// - Returns: 해당 코드에 맞는 `Currency` 객체. 존재하지 않으면 `nil` 반환.
     func currency(by code: String) -> Currency? {
         cachedCurrencies?.first(where: { $0.code == code })
     }
 
+    /// CoreData에서 이전 환율 데이터를 가져오는 메서드
+    ///
+    /// - Returns: 이전 환율 데이터를 담은 `[Currency]`. 존재하지 않으면 `nil` 반환.
     func fetchLatestCurrencies() -> [Currency]? {
         guard let latestMeta = fetchLatestCurrencyDataSource.fetchLatestMeta(),
               let currencyEntities = fetchLatestCurrencyDataSource.fetchCurrencies(meta: latestMeta)
@@ -68,16 +71,27 @@ final class DefaultCurrencyRepository: CurrencyRepository {
         return currencies.map { mapper.map(from: $0) }
     }
 
+    /// CoreData에서 즐겨찾기 정보를 가져오는 메서드
+    ///
+    /// - Returns: 즐겨찾기 목록. 존재하지 않으면 `nil` 반환
     func fetchFavorites() -> [Favorite]? {
         guard let favorites = fetchFavoriteDataSource.fetchFavorites() else { return .none }
 
         return favorites.map { mapper.map(from: $0) }
     }
 
+    /// 통화 코드를 기준으로 즐겨찾기 여부를 저장하는 메서드.
+    ///
+    /// - Parameter code: 즐겨찾기에 추가할 통화 코드
     func saveFavorite(by code: String) {
         saveFavoriteDataSource.saveFavorite(by: code)
     }
 
+    /// CoreData에 최신 환율 데이터를 저장하는 메서드
+    ///
+    /// - Parameters:
+    ///   - currencies: 환율 목록
+    ///   - meta: 환율 메타 정보
     private func saveCurrencies(_ currencies: [Currency], _ meta: CurrencyMeta) {
         let currencyEntities = currencies.map { mapper.map(from: $0) }
 

@@ -68,13 +68,13 @@ final class CurrencyInfoViewModel: ViewModelProtocol {
         state.filteredCurrencies = sorted(state.filteredCurrencies)
         state.currencies = sorted(state.currencies)
 
-        saveFavoriteUseCase.saveFavorite(by: code)
+        saveFavoriteUseCase.execute(by: code)
 
         action?(.didUpdate)
     }
 
     private func fetchFavorites() -> [String: Bool]? {
-        fetchFavoriteUseCase.fetchFavorites()
+        fetchFavoriteUseCase.execute()
     }
 
     /// 즐겨찾기 상태를 기준으로 환율을 정렬하는 메서드

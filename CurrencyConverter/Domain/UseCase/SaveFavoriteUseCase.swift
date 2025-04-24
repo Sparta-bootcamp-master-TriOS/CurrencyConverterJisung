@@ -1,3 +1,3 @@
 protocol SaveFavoriteUseCase {
-    func saveFavorite(by code: String)
+    func execute(by code: String)
 }
