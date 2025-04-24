@@ -22,6 +22,12 @@ final class CurrencyConverterViewController: UIViewController {
         nil
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        currencyConverterViewModel.viewDidAppear()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

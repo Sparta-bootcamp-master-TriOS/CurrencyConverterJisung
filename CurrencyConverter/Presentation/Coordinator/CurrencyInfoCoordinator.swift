@@ -10,7 +10,7 @@ final class CurrencyInfoCoordinator {
     }
 
     /// CurrencyInfoViewController 생성
-    func makeCurrencyInfoViewController() -> UIViewController {
+    func makeCurrencyInfoViewController() -> CurrencyInfoViewController {
         let currencyInfoViewController = appDIContainer.makeCurrencyInfoViewController()
         currencyInfoViewController.coordinator = self
 

@@ -7,6 +7,8 @@ final class CurrencyInfoViewController: UIViewController {
     var coordinator: CurrencyInfoCoordinator?
     let currencyInfoViewModel: CurrencyInfoViewModel
 
+    var onDataReady: (() -> Void)?
+
     private let titleLabel = TitleLabel()
     private let searchBar = CurrencySearchBar()
     private let currencyInfoView = CurrencyInfoView()
@@ -17,6 +19,12 @@ final class CurrencyInfoViewController: UIViewController {
         self.currencyInfoViewModel = currencyInfoViewModel
 
         super.init(nibName: nil, bundle: nil)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        currencyInfoViewModel.viewDidAppear()
     }
 
     override func viewDidLoad() {
@@ -73,6 +81,7 @@ final class CurrencyInfoViewController: UIViewController {
                 switch action {
                 case .didFetch:
                     self?.tableView.reloadData()
+                    self?.onDataReady?()
                 case .didFail:
                     self?.showErrorAlert()
                 case .didUpdate:

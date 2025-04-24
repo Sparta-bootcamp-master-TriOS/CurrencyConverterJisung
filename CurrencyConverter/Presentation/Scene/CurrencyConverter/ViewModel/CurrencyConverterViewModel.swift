@@ -1,12 +1,25 @@
 final class CurrencyConverterViewModel {
     private let convertCurrencyUseCase: ConvertCurrencyUseCase
+    private let saveLastSeenSceneUseCase: SaveLastSeenSceneUseCase
 
     var action: ((Action) -> Void)?
     private(set) var state: State
 
-    init(convertCurrencyUseCase: ConvertCurrencyUseCase, currency: CurrencyDisplay) {
+    init(
+        convertCurrencyUseCase: ConvertCurrencyUseCase,
+        saveLastSeenSceneUseCase: SaveLastSeenSceneUseCase,
+        currency: CurrencyDisplay
+    ) {
         self.convertCurrencyUseCase = convertCurrencyUseCase
+        self.saveLastSeenSceneUseCase = saveLastSeenSceneUseCase
         state = State(currency: currency)
+    }
+
+    func viewDidAppear() {
+        saveLastSeenSceneUseCase.execute(
+            scene: LastSeenScene.currencyConverter.rawValue,
+            code: state.currency.code
+        )
     }
 
     func convertCurrency(amountText: String) {
